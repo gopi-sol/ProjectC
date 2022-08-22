@@ -11,7 +11,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+
 import org.openqa.selenium.Alert;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -89,7 +91,9 @@ public class MappingsExport extends BaseClass {
 		if (title.equals("Login pagina")) {
 
 		} else if (title.equals("Service Unavailable")) {
+
 			test.log(LogStatus.FAIL, test.addScreenCapture(getAScreenshot()) +"Service Unavailable");
+
 			Assert.assertEquals(title, "Login pagina");
 		}else {
 
@@ -132,8 +136,10 @@ public class MappingsExport extends BaseClass {
 		
 		if (utils.getElement(homePage.getPopupSelect1st()).getText().equals("No data found")||utils.getElement(homePage.getPopupSelect1st()).getText().equals("Geen gegevens gevonden")) {
 			test.log(LogStatus.FAIL,
+
 					test.addScreenCapture(getAScreenshot()) +tu.getData("Mandants", i+1, 0)+ " -No such Mandant found");
 //			tu.writeOnCell("Mandants", i+1, 1, "No such Mandant");
+
 			
 			driver.switchTo().defaultContent();
 			
@@ -183,7 +189,9 @@ public class MappingsExport extends BaseClass {
 			
 			utils.waitForElementToBeClickable(homePage.getPopupSelect1st(), 90);
 		utils.getElement(homePage.getPopupSelect1st()).click();
+
 		test.log(LogStatus.PASS, test.addScreenCapture(getAScreenshot()) +tu.getData("Mandants", i+1, 0)+ " -Mandant delegated");
+
 		System.out.println(tu.getData("Mandants", i+1, 0));
 		Thread.sleep(2000);
 		
@@ -211,8 +219,10 @@ public class MappingsExport extends BaseClass {
 		
 		if (utils.getElement(mappingPage.getPopupSelect1st()).getText().equals("No data found")||utils.getElement(mappingPage.getPopupSelect1st()).getText().equals("Geen gegevens gevonden")) {
 			test.log(LogStatus.FAIL,
+
 					test.addScreenCapture(getAScreenshot()) +tu.getData("Mappings", i+1, j)+ " -No such mapping found");
 //			tu.writeOnCell("Mappings", i+1, 2, "No such Mapping");
+
 			
 			driver.switchTo().defaultContent();
 			utils.doJsClick(mappingPage.getPopupCloseBtn());
@@ -272,8 +282,9 @@ public class MappingsExport extends BaseClass {
 			
 			Thread.sleep(2000);
 			test.log(LogStatus.PASS,
+
 					test.addScreenCapture(getAScreenshot()) + tu.getData("Mappings", i+1, j+1)+"- mapping downloaded");
-			
+
 			driver.switchTo().defaultContent();
 			driver.switchTo().frame("kop");
 			utils.getElement(mappingPage.getLogOut()).click();
@@ -406,6 +417,7 @@ public class MappingsExport extends BaseClass {
 			folders = driver.findElements(sharepointPage.getFolders());
 			String currentDate = utils.currentDate();
 			String dateStamp = currentDate.replace("-", "");
+
 			if (folders.size()==0) {
 				utils.waitForElementToBeClickable(driver.findElement(By.xpath("//span[contains(text(),'New')]")), 90);
 				driver.findElement(By.xpath("//span[contains(text(),'New')]")).click();
@@ -414,18 +426,22 @@ public class MappingsExport extends BaseClass {
 				Thread.sleep(10000);
 				driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 				utils.waitForElementToBeClickable(driver.findElement(By.xpath("//input[@aria-label='Enter your folder name']")), 90);
+
 				
 				driver.findElement(By.xpath("//input[@aria-label='Enter your folder name']")).sendKeys("MappingExport_"+dateStamp);
+
 				utils.waitForElementToBeClickable(driver.findElement(By.xpath("//span[contains(text(),'Create')]")), 90);
 				driver.findElement(By.xpath("//span[contains(text(),'Create')]")).click();
 				Thread.sleep(10000);
 				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 //				utils.visibilityOfAllElements(driver.findElements(sharepointPage.getFolders()), 90);
 				folders = driver.findElements(sharepointPage.getFolders());
+
 				System.out.println(folders.size());
 				for (int k2 = 0; k2 < folders.size(); k2++) {
 					
 					if (folders.get(k2).getText().equals("MappingExport_"+dateStamp)) {
+
 						
 						folders.get(k2).click();
 						Thread.sleep(3000);
@@ -434,9 +450,11 @@ public class MappingsExport extends BaseClass {
 				}
 			}else {
 				
+
 			System.out.println(folders.size());
 			for (int k = 0; k < folders.size(); k++) {
 				if (folders.get(k).getText().equals("MappingExport_"+dateStamp)) {
+
 					System.out.println(folders.get(k).getText()+ " is about to be clicked");
 
 					folders.get(k).click();
@@ -444,8 +462,10 @@ public class MappingsExport extends BaseClass {
 					
 					Thread.sleep(3000);
 					break;
+
 					
 				}else if (!("MappingExport_"+dateStamp).equals(folders.get(k).getText()) && k==folders.size()-1) {
+
 					utils.waitForElementToBeClickable(driver.findElement(By.xpath("//span[contains(text(),'New')]")), 90);
 					driver.findElement(By.xpath("//span[contains(text(),'New')]")).click();
 					utils.waitForElementToBeClickable(driver.findElement(By.xpath("//span[contains(text(),'Folder')]")), 90);
@@ -453,6 +473,7 @@ public class MappingsExport extends BaseClass {
 					Thread.sleep(10000);
 					driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 					utils.waitForElementToBeClickable(driver.findElement(By.xpath("//input[@aria-label='Enter your folder name']")), 90);
+
 					driver.findElement(By.xpath("//input[@aria-label='Enter your folder name']")).sendKeys("MappingExport_"+dateStamp);
 					utils.waitForElementToBeClickable(driver.findElement(By.xpath("//span[contains(text(),'Create')]")), 90);
 					driver.findElement(By.xpath("//span[contains(text(),'Create')]")).click();
@@ -465,19 +486,24 @@ public class MappingsExport extends BaseClass {
 					for (int k2 = 0; k2 < folders.size(); k2++) {
 						
 						if (folders.get(k2).getText().equals("MappingExport_"+dateStamp)) {
+
 							
 							folders.get(k2).click();
 							Thread.sleep(3000);
 							break;
 						} 
+
 						
 					}
 					break;
+
 				}
 			}
 			}
 			
+
 			Thread.sleep(3000);
+
 			utils.waitForElementToBeClickable(driver.findElement(By.xpath("//span[contains(text(),'Upload')]")), 90);
 			driver.findElement(By.xpath("//span[contains(text(),'Upload')]")).click();
 			utils.waitForElementToBeClickable(driver.findElement(By.xpath("//span[contains(text(),'Files')]")), 90);
@@ -509,6 +535,7 @@ public class MappingsExport extends BaseClass {
 			
 			Thread.sleep(2000);
 			
+
 			Thread.sleep(5000);
 			
 			utils.visibilityOfAllElements(driver.findElements(sharepointPage.getFolders()), 120);
@@ -654,12 +681,15 @@ public class MappingsExport extends BaseClass {
 			}
 			
 			
+
 			
 			
 			}else {
 				test.log(LogStatus.FAIL,
+
 						test.addScreenCapture(getAScreenshot()) +tu.getData("Mappings", i+1, j)+ " -No such mapping found");
 //				tu.writeOnCell("Mappings", i+1, 2, "No such Mapping");
+
 				
 				Thread.sleep(2000);
 				

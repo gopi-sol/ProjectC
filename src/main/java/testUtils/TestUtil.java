@@ -120,7 +120,11 @@ public class TestUtil extends BaseClass {
 		FileInputStream file = null;
 		
 		try {
+<<<<<<< HEAD
 			file = new FileInputStream(System.getProperty("user.dir")+File.separator+"TestMappingExportAuto.xlsx");
+=======
+			file = new FileInputStream(System.getProperty("user.dir")+File.separator+"AutoConnector.xlsx");
+>>>>>>> 3beb93f127be57a33e6dcf85db0324785fec86a9
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -236,7 +240,11 @@ public class TestUtil extends BaseClass {
 	public void writeOnCell(String sheetName ,int rowNo, int cellNo, String status) throws IOException {
 
 		try {
+<<<<<<< HEAD
 			f = new File(System.getProperty("user.dir")+File.separator+"TestMappingExportAuto.xlsx");
+=======
+			f = new File(System.getProperty("user.dir")+File.separator+"AutoConnectorClone2.xlsx");
+>>>>>>> 3beb93f127be57a33e6dcf85db0324785fec86a9
 		} catch (Exception e) {
 			System.out.println("could not access input data file");
 			e.printStackTrace();

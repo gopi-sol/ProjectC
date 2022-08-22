@@ -36,12 +36,15 @@ ElementUtil utils = new ElementUtil(driver);
 	
 	By popupCloseBtn = By.xpath("(//div[@id='popupControls'])[2]/img[@id='popCloseBox']");
 	
+<<<<<<< HEAD
 	By deleteBtn = By.xpath("//input[@id='btnDelete']");
 	
 	public By getDeleteBtn() {
 		return deleteBtn;
 	}
 
+=======
+>>>>>>> 3beb93f127be57a33e6dcf85db0324785fec86a9
 	public By getPopupCloseBtn() {
 		return popupCloseBtn;
 	}

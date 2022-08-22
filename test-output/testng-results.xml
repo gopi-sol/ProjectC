@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="494195" started-at="2022-08-20T06:06:27Z" finished-at="2022-08-20T06:14:42Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="494195" started-at="2022-08-20T06:06:27Z" finished-at="2022-08-20T06:14:42Z">
+      <class name="testScenarios.MappingsExport">
+        <test-method status="PASS" signature="startTest()[pri:0, instance:testScenarios.MappingsExport@59ec2012]" name="startTest" is-config="true" duration-ms="212" started-at="2022-08-20T11:36:27Z" finished-at="2022-08-20T11:36:27Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startTest -->
+        <test-method status="PASS" signature="setup()[pri:0, instance:testScenarios.MappingsExport@59ec2012]" name="setup" is-config="true" duration-ms="7182" started-at="2022-08-20T11:36:27Z" finished-at="2022-08-20T11:36:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testScenarios.MappingsExport@59ec2012]" name="setUp" is-config="true" duration-ms="7" started-at="2022-08-20T11:36:35Z" finished-at="2022-08-20T11:36:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="mappingExport()[pri:0, instance:testScenarios.MappingsExport@59ec2012]" name="mappingExport" duration-ms="486952" started-at="2022-08-20T11:36:35Z" finished-at="2022-08-20T11:44:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- mappingExport -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testScenarios.MappingsExport@59ec2012]" name="tearDown" is-config="true" duration-ms="0" started-at="2022-08-20T11:44:42Z" finished-at="2022-08-20T11:44:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="endTest()[pri:0, instance:testScenarios.MappingsExport@59ec2012]" name="endTest" is-config="true" duration-ms="649" started-at="2022-08-20T11:44:43Z" finished-at="2022-08-20T11:44:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endTest -->
+      </class> <!-- testScenarios.MappingsExport -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
