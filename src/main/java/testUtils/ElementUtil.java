@@ -2,11 +2,10 @@ package testUtils;
 
 import java.io.File;
 import java.time.Duration;
-<<<<<<< HEAD
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-=======
->>>>>>> 3beb93f127be57a33e6dcf85db0324785fec86a9
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -104,7 +103,7 @@ public class ElementUtil {
 //
 //	}
 
-<<<<<<< HEAD
+
 	public String currentDate() {
 		LocalDate today = LocalDate.now();
 	    System.out.println("Current date: " + today);
@@ -113,9 +112,7 @@ public class ElementUtil {
 	    String format = today.format(formatter);
 return format;
 	}
-=======
-	
->>>>>>> 3beb93f127be57a33e6dcf85db0324785fec86a9
+
 	
 	public void doClick(By locator){
 		getElement(locator).click();
