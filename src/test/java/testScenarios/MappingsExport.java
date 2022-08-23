@@ -81,6 +81,9 @@ public class MappingsExport extends BaseClass {
 	}
 
 static String ExcelName;
+static List<WebElement> mappingCleanUpRows,mappingCleanUpColumns=null;
+
+
 	@Test()
 	public void mappingExport() throws IOException, InterruptedException {
 		
@@ -124,20 +127,39 @@ static String ExcelName;
 		}
 		
 		homePage.clickMappingCleanUpLogging();
-List<WebElement> mappingCleanUpRows = driver.findElements(homePage.getMappingCleanUpRows());
+		driver.switchTo().frame("mainwindow");
+		utils.waitForElementToBeClickable(driver.findElement(By.xpath("//div[@id='headerdiv']")), 30);
+		driver.findElement(By.xpath("//div[@id='headerdiv']")).click();
+		
+		utils.waitForElementToBeClickable(homePage.getMappingCleanUpRows(), 60);
+		mappingCleanUpRows = driver.findElements(homePage.getMappingCleanUpRows());
+		System.out.println(mappingCleanUpRows.size());
+		
 		File fExcel = new File(System.getProperty("user.dir"));
 
 		String absolutePathExcel = fExcel.getAbsolutePath();
+		
 		for (int i = 0; i < mappingCleanUpRows.size(); i++) {
 			
-			List<WebElement> mappingCleanUpColumns = mappingCleanUpRows.get(i).findElements(By.tagName("td"));
+			mappingCleanUpColumns = mappingCleanUpRows.get(i).findElements(By.tagName("td"));
 		
+			System.out.println(mappingCleanUpColumns.get(0).getText());
+			System.out.println(mappingCleanUpColumns.get(0).getText().contains("22-08-2022"));
 			if (mappingCleanUpColumns.get(0).getText().contains("22-08-2022")) {
+				System.out.println("Entered if");
+				System.out.println(mappingCleanUpColumns.get(1).getText());
 				
 				ExcelName = mappingCleanUpColumns.get(1).getText();
 				
-				mappingCleanUpColumns.get(1).click();
-				StringSelection file = new StringSelection(absolutePathExcel);
+				System.out.println(mappingCleanUpColumns.get(1)+" is about to be clicked");
+
+				
+				WebElement toClick = mappingCleanUpColumns.get(1).findElement(By.tagName("a"));
+				toClick.click();
+				Thread.sleep(5000);
+				
+				System.out.println(mappingCleanUpColumns.get(1)+" is clicked");
+				StringSelection file = new StringSelection(absolutePathExcel+ File.separator + ExcelName);
 
 				Toolkit.getDefaultToolkit().getSystemClipboard().setContents(file, null);
 
@@ -223,6 +245,7 @@ List<WebElement> mappingCleanUpRows = driver.findElements(homePage.getMappingCle
 			} catch (Exception e) {
 
 				try {
+					
 
 				} catch (Exception noSuchElementException) {
 
@@ -239,8 +262,26 @@ List<WebElement> mappingCleanUpRows = driver.findElements(homePage.getMappingCle
 
 		System.out.println(tu.getData(ExcelName,"Mapping templates ", i+1, 0));
 		Thread.sleep(2000);
+		driver.switchTo().frame("kop");
+		utils.waitForElementToBeClickable(homePage.getUserName(), 90);
+		System.out.println(utils.getElement(homePage.getUserName()).getText());
 		
-		homePage.clickMapping();
+		if (utils.getElement(homePage.getUserName()).getText().equals(",")) {
+			System.out.println(utils.getElement(homePage.getUserName()).getText());
+			System.out.println("Can't proceed Further");
+			test.log(LogStatus.FAIL,
+
+					test.addScreenCapture(getAScreenshot()) +tu.getData(ExcelName,"Mapping templates ", i+1, 1)+ " -Can't proceed Further");
+			driver.switchTo().defaultContent();
+			driver.switchTo().frame("kop");
+			utils.getElement(mappingPage.getLogOff()).click();
+		
+		}
+		else if (utils.getElement(homePage.getUserName()).getText().split(",")[1].equals(tu.getData(ExcelName,"Mapping templates ", i+1, 0)) && utils.getElement(homePage.getUserName()).getText().split(",")[1].length()>1) {
+		
+			System.out.println(utils.getElement(homePage.getUserName()).getText().split(",")[1] + tu.getData(ExcelName,"Mapping templates ", i+1, 0));	
+		
+			homePage.clickMapping();
 		System.out.println("Mapping Clicked");
 		driver.switchTo().frame("mainwindow");
 		utils.waitForElementToBeClickable(mappingPage.getPageHeader(), 90);
@@ -742,6 +783,15 @@ List<WebElement> mappingCleanUpRows = driver.findElements(homePage.getMappingCle
 			}
 			
 			
+		}
+		}
+		else {
+			System.out.println("Can't proceed Further");
+			test.log(LogStatus.FAIL,
+
+					test.addScreenCapture(getAScreenshot()) +tu.getData(ExcelName,"Mapping templates ", i+1, 1)+ " -Can't proceed Further");
+			driver.switchTo().frame("kop");
+			utils.getElement(mappingPage.getLogOff()).click();
 		}
 		}
 		

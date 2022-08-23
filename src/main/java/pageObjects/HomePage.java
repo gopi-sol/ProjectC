@@ -59,8 +59,14 @@ ElementUtil utils = new ElementUtil(driver);
 	
 	By popupTitle = By.xpath("//div[@id='popupTitle']");
 	
-	By mappingCleanUpLogging = By.xpath("//a[contains(text(),'Mapping clean up logging')]");
+	By mappingCleanUpLogging = By.xpath("//a[@href='Authenticate/MappingCleanupLog.aspx']");
 	
+	By userName = By.xpath("//span[@id='lblHdr3']");
+	
+	public By getUserName() {
+		return userName;
+	}
+
 	public By getLogging() {
 		return logging;
 	}
