@@ -68,9 +68,9 @@ public class BaseClass {
 	
 
 	
-	public static void initialization() throws IOException{
+	public static void initialization(String Excelfile) throws IOException{
 		
-		String browserName =tu.getData("Login", 1, 3);
+		String browserName =tu.getData(Excelfile,"Login", 1, 3);
 
 		if(browserName.equals("chrome")){
 			WebDriverManager.chromedriver().setup();
@@ -101,10 +101,10 @@ public class BaseClass {
 		
 	}
 		
-	public static void urlLaunch() throws IOException {
+	public static void urlLaunch(String Excelfile) throws IOException {
 		
 		try {
-			driver.get(tu.getData("Login", 1, 0));
+			driver.get(tu.getData(Excelfile,"Login", 1, 0));
 		} catch (Exception e) {
 			
 			System.out.println("No Valid Input");
@@ -112,9 +112,9 @@ public class BaseClass {
 		}
 
 	}
-	public static void urlLaunchT() {
+	public static void urlLaunchT(String Excelfile) {
 		try {
-			driver.get(tu.getData("Login", 2, 0));
+			driver.get(tu.getData(Excelfile,"Login", 2, 0));
 		} catch (Exception e) {
 			
 			System.out.println("No Valid Input");

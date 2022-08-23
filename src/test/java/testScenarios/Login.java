@@ -52,7 +52,7 @@ public class Login extends BaseClass{
 	@BeforeTest()
 	public void setup() throws IOException {
 
-		initialization();
+		initialization("MappingRegression");
 
 		loginPage = new LoginPage();
 		homePage = new HomePage();
@@ -72,7 +72,7 @@ public class Login extends BaseClass{
 	}
 	@Test
 	public void loginSuccess() throws InterruptedException, IOException {
-		urlLaunch();
+		urlLaunch("MappingRegression");
 
 		String title = driver.getTitle();
 
@@ -85,7 +85,7 @@ public class Login extends BaseClass{
 		}
 
 		loginPage.ClearUsPwd();
-		loginPage.LoginPageTest(tu.getData("Login", 1, 1), tu.getData("Login", 1, 2));
+		loginPage.LoginPageTest(tu.getData("MappingRegression","Login", 1, 1), tu.getData("MappingRegression","Login", 1, 2));
 
 		try {
 

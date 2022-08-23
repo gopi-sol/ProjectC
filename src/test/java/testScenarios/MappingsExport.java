@@ -68,7 +68,7 @@ public class MappingsExport extends BaseClass {
 	@BeforeTest()
 	public void setup() throws IOException {
 
-		initialization();
+		initialization("TestMappingExportAuto.xlsx");
 
 		loginPage = new LoginPage();
 		homePage = new HomePage();
@@ -80,11 +80,11 @@ public class MappingsExport extends BaseClass {
 
 	}
 
-
+static String ExcelName;
 	@Test()
 	public void mappingExport() throws IOException, InterruptedException {
 		
-		urlLaunch();
+		urlLaunch("TestMappingExportAuto.xlsx");
 
 		String title = driver.getTitle();
 
@@ -102,7 +102,7 @@ public class MappingsExport extends BaseClass {
 		}
 
 		loginPage.ClearUsPwd();
-		loginPage.LoginPageTest(tu.getData("Login", 1, 1), tu.getData("Login", 1, 2));
+		loginPage.LoginPageTest(tu.getData("TestMappingExportAuto.xlsx","Login", 1, 1), tu.getData("TestMappingExportAuto.xlsx","Login", 1, 2));
 
 		try {
 
@@ -123,22 +123,67 @@ public class MappingsExport extends BaseClass {
 
 		}
 		
-		for (int i = 0; i < tu.getRowLength("Mandants"); i++) {
+		homePage.clickMappingCleanUpLogging();
+List<WebElement> mappingCleanUpRows = driver.findElements(homePage.getMappingCleanUpRows());
+		File fExcel = new File(System.getProperty("user.dir"));
+
+		String absolutePathExcel = fExcel.getAbsolutePath();
+		for (int i = 0; i < mappingCleanUpRows.size(); i++) {
+			
+			List<WebElement> mappingCleanUpColumns = mappingCleanUpRows.get(i).findElements(By.tagName("td"));
+		
+			if (mappingCleanUpColumns.get(0).getText().contains("22-08-2022")) {
+				
+				ExcelName = mappingCleanUpColumns.get(1).getText();
+				
+				mappingCleanUpColumns.get(1).click();
+				StringSelection file = new StringSelection(absolutePathExcel);
+
+				Toolkit.getDefaultToolkit().getSystemClipboard().setContents(file, null);
+
+				Robot rb = null;
+
+				try {
+					rb = new Robot();
+				} catch (AWTException e) {
+					
+					e.printStackTrace();
+				}
+
+				rb.setAutoDelay(2000); // Similar to thread.sleep
+
+				rb.keyPress(KeyEvent.VK_CONTROL);
+				rb.keyPress(KeyEvent.VK_V);
+				rb.keyRelease(KeyEvent.VK_V);
+				rb.keyRelease(KeyEvent.VK_CONTROL);
+
+				rb.setAutoDelay(2000);
+
+				rb.keyPress(KeyEvent.VK_ENTER);
+				rb.keyRelease(KeyEvent.VK_ENTER);
+				
+				Thread.sleep(5000);
+			break;	
+			}
 			
 			
+		}
+
+
+		for (int i = 0; i < tu.getRowLength(ExcelName,"Mapping templates "); i++) {	
 		driver.switchTo().defaultContent();
 		utils.waitForElementToBeClickable(homePage.getMandantBrowser(), 90);
 		utils.getElement(homePage.getMandantBrowser()).click();
 		driver.switchTo().frame(utils.getElement(homePage.getPopupFrame()));
-		utils.getElement(homePage.getMandantSearchBox()).sendKeys(tu.getData("Mandants", i+1, 0));
-		System.out.println(tu.getData("Mandants", i+1, 0) +"is Passed");
+		utils.getElement(homePage.getMandantSearchBox()).sendKeys(tu.getData(ExcelName,"Mapping templates ", i+1, 0));
+		System.out.println(tu.getData(ExcelName,"Mapping templates ", i+1, 0) +"is Passed");
 		utils.getElement(homePage.getMandantSearchBtn()).click();
 		
 		if (utils.getElement(homePage.getPopupSelect1st()).getText().equals("No data found")||utils.getElement(homePage.getPopupSelect1st()).getText().equals("Geen gegevens gevonden")) {
 			test.log(LogStatus.FAIL,
 
-					test.addScreenCapture(getAScreenshot()) +tu.getData("Mandants", i+1, 0)+ " -No such Mandant found");
-//			tu.writeOnCell("Mandants", i+1, 1, "No such Mandant");
+					test.addScreenCapture(getAScreenshot()) +tu.getData(ExcelName,"Mapping templates ", i+1, 0)+ " -No such Mandant found");
+//			tu.writeOnCell("Mapping templates ", i+1, 1, "No such Mandant");
 
 			
 			driver.switchTo().defaultContent();
@@ -155,7 +200,7 @@ public class MappingsExport extends BaseClass {
 			
 			Thread.sleep(2000);
 			
-			urlLaunch();
+			urlLaunch("TestMappingExportAuto.xlsx");
 
 			String title1 = driver.getTitle();
 
@@ -168,7 +213,7 @@ public class MappingsExport extends BaseClass {
 			}
 
 			loginPage.ClearUsPwd();
-			loginPage.LoginPageTest(tu.getData("Login", 1, 1), tu.getData("Login", 1, 2));
+			loginPage.LoginPageTest(tu.getData("TestMappingExportAuto.xlsx","Login", 1, 1), tu.getData("TestMappingExportAuto.xlsx","Login", 1, 2));
 
 			try {
 
@@ -190,9 +235,9 @@ public class MappingsExport extends BaseClass {
 			utils.waitForElementToBeClickable(homePage.getPopupSelect1st(), 90);
 		utils.getElement(homePage.getPopupSelect1st()).click();
 
-		test.log(LogStatus.PASS, test.addScreenCapture(getAScreenshot()) +tu.getData("Mandants", i+1, 0)+ " -Mandant delegated");
+		test.log(LogStatus.PASS, test.addScreenCapture(getAScreenshot()) +tu.getData(ExcelName,"Mapping templates ", i+1, 0)+ " -Mandant delegated");
 
-		System.out.println(tu.getData("Mandants", i+1, 0));
+		System.out.println(tu.getData(ExcelName,"Mapping templates ", i+1, 0));
 		Thread.sleep(2000);
 		
 		homePage.clickMapping();
@@ -203,16 +248,13 @@ public class MappingsExport extends BaseClass {
 		utils.getElement(mappingPage.getPageHeader()).click();
 		System.out.println(utils.getElement(mappingPage.getPageHeader()).getText()+" is Clicked");
 		
-		for (int j = 0; j < tu.getLastCellNum("Mappings", i+1)-1; j++) {
-			
-		System.out.println(tu.getLastCellNum("Mappings", i+1));
 		
 		utils.waitForElementToBeClickable(mappingPage.getMappingBrowser(), 90);
 		utils.getElement(mappingPage.getMappingBrowser()).click();
 		String parentWindowHandler = driver.getWindowHandle();
 		driver.switchTo().frame(utils.getElement(mappingPage.getPopupFrame()));
 		utils.waitForElementToBeClickable(mappingPage.getMappingSearchBox(), 90);
-		utils.getElement(mappingPage.getMappingSearchBox()).sendKeys(tu.getData("Mappings", i+1, j));
+		utils.getElement(mappingPage.getMappingSearchBox()).sendKeys(tu.getData(ExcelName,"Mapping templates ", i+1, 1));
 		utils.getElement(mappingPage.getMappingSearchBtn()).click();
 		Thread.sleep(2000);
 		utils.waitForElementToBeClickable(mappingPage.getPopupSelect1st(), 90);
@@ -220,8 +262,8 @@ public class MappingsExport extends BaseClass {
 		if (utils.getElement(mappingPage.getPopupSelect1st()).getText().equals("No data found")||utils.getElement(mappingPage.getPopupSelect1st()).getText().equals("Geen gegevens gevonden")) {
 			test.log(LogStatus.FAIL,
 
-					test.addScreenCapture(getAScreenshot()) +tu.getData("Mappings", i+1, j)+ " -No such mapping found");
-//			tu.writeOnCell("Mappings", i+1, 2, "No such Mapping");
+					test.addScreenCapture(getAScreenshot()) +tu.getData(ExcelName,"Mapping templates ", i+1, 1)+ " -No such mapping found");
+//			tu.writeOnCell("Mapping templates ", i+1, 2, "No such Mapping");
 
 			
 			driver.switchTo().defaultContent();
@@ -231,7 +273,7 @@ public class MappingsExport extends BaseClass {
 			
 		} else {
 			utils.waitForElementToBeClickable(mappingPage.getPopupSelect1st(), 90);
-			if (utils.getElement(mappingPage.getPopupSelect1st()).getText().equals(tu.getData("Mappings", i+1, j))) {
+			if (utils.getElement(mappingPage.getPopupSelect1st()).getText().equals(tu.getData(ExcelName,"Mapping templates ", i+1, 1))) {
 				
 			
 			utils.getElement(mappingPage.getPopupSelect1st()).click();
@@ -242,18 +284,18 @@ public class MappingsExport extends BaseClass {
 			utils.getElement(mappingPage.getExportBtn()).click();
 			Thread.sleep(8000);
 			
-			File fm = new File(System.getProperty("user.dir") + File.separator +"Mappings");
+			File fm = new File(System.getProperty("user.dir") + File.separator +"Mapping templates ");
 			fm.mkdir();
 			
-			String mandantFolder = tu.getData("Mandants", i+1, 0).replace("/", "|");
+			String mandantFolder = tu.getData(ExcelName,"Mapping templates ", i+1, 0).replace("/", "|");
 			
-			File f = new File(System.getProperty("user.dir") + File.separator +"Mappings" + File.separator +mandantFolder );
+			File f = new File(System.getProperty("user.dir") + File.separator +"Mapping templates " + File.separator +mandantFolder );
 			f.mkdir();
 			
 			String absolutePath = f.getAbsolutePath();
 			
 			
-			String mappingName = tu.getData("Mappings", i+1, j+1).replace("/", "|");
+			String mappingName = tu.getData(ExcelName,"Mapping templates ", i+1, 1).replace("/", "|");
 			
 			StringSelection fileO = new StringSelection(absolutePath + File.separator + mappingName);
 
@@ -283,29 +325,29 @@ public class MappingsExport extends BaseClass {
 			Thread.sleep(2000);
 			test.log(LogStatus.PASS,
 
-					test.addScreenCapture(getAScreenshot()) + tu.getData("Mappings", i+1, j+1)+"- mapping downloaded");
+					test.addScreenCapture(getAScreenshot()) + tu.getData(ExcelName,"Mapping templates ", i+1, 1)+"- mapping downloaded");
 
 			driver.switchTo().defaultContent();
 			driver.switchTo().frame("kop");
 			utils.getElement(mappingPage.getLogOut()).click();
 			Thread.sleep(5000);
 			driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
-			driver.get(tu.getData("Sharepoint", 1, 0));
+			driver.get(tu.getData("TestMappingExportAuto.xlsx","Sharepoint", 1, 0));
 			Thread.sleep(5000);
 			driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			if (i==0) {
 				
 			utils.waitForElementToBeClickable(driver.findElement(sharepointPage.getUsername()), 30);
-			driver.findElement(sharepointPage.getUsername()).sendKeys(tu.getData("Sharepoint", 1, 1));
-			System.out.println(tu.getData("Sharepoint", 1, 1));
+			driver.findElement(sharepointPage.getUsername()).sendKeys(tu.getData("TestMappingExportAuto.xlsx","Sharepoint", 1, 1));
+			System.out.println(tu.getData("TestMappingExportAuto.xlsx","Sharepoint", 1, 1));
 			driver.findElement(sharepointPage.getSubmit()).click();
 			Thread.sleep(5000);
 			driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			utils.waitForElementToBeClickable(driver.findElement(sharepointPage.getPassword()), 30);
-			driver.findElement(sharepointPage.getPassword()).sendKeys(tu.getData("Sharepoint", 1, 2));
-			System.out.println(tu.getData("Sharepoint", 1, 2));
+			driver.findElement(sharepointPage.getPassword()).sendKeys(tu.getData("TestMappingExportAuto.xlsx","Sharepoint", 1, 2));
+			System.out.println(tu.getData("TestMappingExportAuto.xlsx","Sharepoint", 1, 2));
 			utils.waitForElementToBeClickable(driver.findElement(sharepointPage.getSubmit()), 30);
 			driver.findElement(sharepointPage.getSubmit()).click();
 //			
@@ -350,7 +392,7 @@ public class MappingsExport extends BaseClass {
 				Thread.sleep(10000);
 				driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 				utils.waitForElementToBeClickable(sharepointPage.getFolderName(), 90);
-				driver.findElement(sharepointPage.getFolderName()).sendKeys("test_"+tu.getData("Mandants", i+1, 0));
+				driver.findElement(sharepointPage.getFolderName()).sendKeys("test_"+tu.getData(ExcelName,"Mapping templates ", i+1, 0));
 				utils.waitForElementToBeClickable(driver.findElement(By.xpath("//span[contains(text(),'Create')]")), 90);
 				driver.findElement(By.xpath("//span[contains(text(),'Create')]")).click();
 				
@@ -361,7 +403,7 @@ public class MappingsExport extends BaseClass {
 				
 				for (int k1 = 0; k1 < folders.size(); k1++) {
 					
-					if (folders.get(k1).getText().equals("test_"+tu.getData("Mandants", i+1, 0))) {
+					if (folders.get(k1).getText().equals("test_"+tu.getData(ExcelName,"Mapping templates ", i+1, 0))) {
 						
 						folders.get(k1).click();
 						Thread.sleep(3000);
@@ -373,7 +415,7 @@ public class MappingsExport extends BaseClass {
 				
 			
 			for (int k = 0; k < folders.size(); k++) {
-				if (folders.get(k).getText().equals("test_"+tu.getData("Mandants", i+1, 0))) {
+				if (folders.get(k).getText().equals("test_"+tu.getData(ExcelName,"Mapping templates ", i+1, 0))) {
 					System.out.println(folders.get(k).getText()+ " is about to be clicked");
 
 					folders.get(k).click();
@@ -390,7 +432,7 @@ public class MappingsExport extends BaseClass {
 					Thread.sleep(10000);
 					driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 					utils.waitForElementToBeClickable(sharepointPage.getFolderName(), 90);
-					driver.findElement(sharepointPage.getFolderName()).sendKeys("test_"+tu.getData("Mandants", i+1, 0));
+					driver.findElement(sharepointPage.getFolderName()).sendKeys("test_"+tu.getData(ExcelName,"Mapping templates ", i+1, 0));
 					utils.waitForElementToBeClickable(driver.findElement(By.xpath("//span[contains(text(),'Create')]")), 90);
 					driver.findElement(By.xpath("//span[contains(text(),'Create')]")).click();
 					Thread.sleep(10000);
@@ -401,7 +443,7 @@ public class MappingsExport extends BaseClass {
 					
 					for (int k1 = 0; k1 < folders.size(); k1++) {
 						
-						if (folders.get(k1).getText().equals("test_"+tu.getData("Mandants", i+1, 0))) {
+						if (folders.get(k1).getText().equals("test_"+tu.getData(ExcelName,"Mapping templates ", i+1, 0))) {
 							
 							folders.get(k1).click();
 							Thread.sleep(3000);
@@ -547,9 +589,9 @@ public class MappingsExport extends BaseClass {
 					System.out.println(mappingName);
 					System.out.println(mappingName +" is Uploaded");
 					test.log(LogStatus.PASS,
-							test.addScreenCapture(getAScreenshot()) + tu.getData("Mappings", i+1, j+1)+"- mapping uploaded");
+							test.addScreenCapture(getAScreenshot()) + tu.getData(ExcelName,"Mapping templates ", i+1, 1)+"- mapping uploaded");
 					
-					urlLaunch();
+					urlLaunch("TestMappingExportAuto.xlsx");
 
 					String title2 = driver.getTitle();
 
@@ -562,7 +604,7 @@ public class MappingsExport extends BaseClass {
 					}
 
 					loginPage.ClearUsPwd();
-					loginPage.LoginPageTest(tu.getData("Login", 1, 1), tu.getData("Login", 1, 2));
+					loginPage.LoginPageTest(tu.getData("TestMappingExportAuto.xlsx","Login", 1, 1), tu.getData("TestMappingExportAuto.xlsx","Login", 1, 2));
 
 					try {
 
@@ -583,14 +625,14 @@ public class MappingsExport extends BaseClass {
 					utils.waitForElementToBeClickable(homePage.getMandantBrowser(), 90);
 					utils.getElement(homePage.getMandantBrowser()).click();
 					driver.switchTo().frame(utils.getElement(homePage.getPopupFrame()));
-					utils.getElement(homePage.getMandantSearchBox()).sendKeys(tu.getData("Mandants", i+1, 0));
-					System.out.println(tu.getData("Mandants", i+1, 0) +"is Passed");
+					utils.getElement(homePage.getMandantSearchBox()).sendKeys(tu.getData(ExcelName,"Mapping templates ", i+1, 0));
+					System.out.println(tu.getData(ExcelName,"Mapping templates ", i+1, 0) +"is Passed");
 					utils.getElement(homePage.getMandantSearchBtn()).click();
 					
 					utils.waitForElementToBeClickable(homePage.getPopupSelect1st(), 90);
 					utils.getElement(homePage.getPopupSelect1st()).click();
-					test.log(LogStatus.PASS, test.addScreenCapture(getAScreenshot()) +tu.getData("Mandants", i+1, 0)+ " -Mandant delegated");
-					System.out.println(tu.getData("Mandants", i+1, 0));
+					test.log(LogStatus.PASS, test.addScreenCapture(getAScreenshot()) +tu.getData(ExcelName,"Mapping templates ", i+1, 0)+ " -Mandant delegated");
+					System.out.println(tu.getData(ExcelName,"Mapping templates ", i+1, 0));
 					Thread.sleep(2000);
 					
 					homePage.clickMapping();
@@ -606,7 +648,7 @@ public class MappingsExport extends BaseClass {
 					String parentWindowHandler1 = driver.getWindowHandle();
 					driver.switchTo().frame(utils.getElement(mappingPage.getPopupFrame()));
 					utils.waitForElementToBeClickable(mappingPage.getMappingSearchBox(), 90);
-					utils.getElement(mappingPage.getMappingSearchBox()).sendKeys(tu.getData("Mappings", i+1, j));
+					utils.getElement(mappingPage.getMappingSearchBox()).sendKeys(tu.getData(ExcelName,"Mapping templates ", i+1, 1));
 					utils.getElement(mappingPage.getMappingSearchBtn()).click();
 					Thread.sleep(2000);
 					utils.waitForElementToBeClickable(mappingPage.getPopupSelect1st(), 90);
@@ -630,7 +672,7 @@ public class MappingsExport extends BaseClass {
 					
 					System.out.println("Mapping Delete");
 					test.log(LogStatus.PASS,
-							test.addScreenCapture(getAScreenshot()) + tu.getData("Mappings", i+1, j+1)+"- mapping deleted");
+							test.addScreenCapture(getAScreenshot()) + tu.getData(ExcelName,"Mapping templates ", i+1, 1)+"- mapping deleted");
 					
 					driver.switchTo().defaultContent();
 					driver.switchTo().frame("kop");
@@ -643,8 +685,8 @@ public class MappingsExport extends BaseClass {
 				System.out.println(mappingName);
 					System.out.println(mappingName +" is not Uploaded");
 					test.log(LogStatus.FAIL,
-							test.addScreenCapture(getAScreenshot()) + tu.getData("Mappings", i+1, j+1)+"- mapping not uploaded");
-					urlLaunch();
+							test.addScreenCapture(getAScreenshot()) + tu.getData(ExcelName,"Mapping templates ", i+1, 1)+"- mapping not uploaded");
+					urlLaunch("TestMappingExportAuto.xlsx");
 
 					String title2 = driver.getTitle();
 
@@ -657,7 +699,7 @@ public class MappingsExport extends BaseClass {
 					}
 
 					loginPage.ClearUsPwd();
-					loginPage.LoginPageTest(tu.getData("Login", 1, 1), tu.getData("Login", 1, 2));
+					loginPage.LoginPageTest(tu.getData("TestMappingExportAuto.xlsx","Login", 1, 1), tu.getData("TestMappingExportAuto.xlsx","Login", 1, 2));
 
 					try {
 
@@ -687,8 +729,8 @@ public class MappingsExport extends BaseClass {
 			}else {
 				test.log(LogStatus.FAIL,
 
-						test.addScreenCapture(getAScreenshot()) +tu.getData("Mappings", i+1, j)+ " -No such mapping found");
-//				tu.writeOnCell("Mappings", i+1, 2, "No such Mapping");
+						test.addScreenCapture(getAScreenshot()) +tu.getData(ExcelName,"Mapping templates ", i+1, 1)+ " -No such mapping found");
+//				tu.writeOnCell("Mapping templates ", i+1, 2, "No such Mapping");
 
 				
 				Thread.sleep(2000);
@@ -698,7 +740,7 @@ public class MappingsExport extends BaseClass {
 				driver.switchTo().frame("kop");
 				utils.getElement(mappingPage.getLogOff()).click();
 			}
-			}
+			
 			
 		}
 		}

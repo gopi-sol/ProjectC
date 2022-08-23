@@ -37,8 +37,9 @@ ElementUtil utils = new ElementUtil(driver);
 	
 	By logging = By.xpath("//a[@href='Authenticate/Common/Logging.aspx']");
 	
-	
+	By mappingCleanUpRows = By.xpath("//table[@id='tblsourceDynamicDatalog']/tbody/tr");
 
+	
 	By mandantBrowser = By.xpath("//input[@id='btnMandantBrowser']");
 	
 	By mandantSearchBox = By.xpath("//input[@id='browSearch']");
@@ -58,10 +59,24 @@ ElementUtil utils = new ElementUtil(driver);
 	
 	By popupTitle = By.xpath("//div[@id='popupTitle']");
 	
+	By mappingCleanUpLogging = By.xpath("//a[contains(text(),'Mapping clean up logging')]");
+	
 	public By getLogging() {
 		return logging;
 	}
 	
+	public By getMappingCleanUpRows() {
+		return mappingCleanUpRows;
+	}
+	
+	public By getSystemSetting() {
+		return systemSetting;
+	}
+
+	public By getMappingCleanUpLogging() {
+		return mappingCleanUpLogging;
+	}
+
 	public By getPopupTitle() {
 		return popupTitle;
 	}
@@ -186,6 +201,15 @@ ElementUtil utils = new ElementUtil(driver);
 		 utils.doMoveToElementAndClick(systemSetting);
 
 	}
+	
+	public void clickMappingCleanUpLogging() {
+		driver.switchTo().defaultContent();
+		 utils.doMoveToElement(modules);
+		 utils.waitForElementToBeClickable(mappingCleanUpLogging, 20);
+		 utils.doMoveToElementAndClick(mappingCleanUpLogging);
+
+	}
+
 
 	public void Logout() {
 		utils.doJsClick(SignOut);

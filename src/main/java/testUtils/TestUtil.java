@@ -265,11 +265,11 @@ public class TestUtil extends BaseClass {
 
 	}
 	
-public String getData(String sheetName ,int rowNo, int cellNo) throws IOException {
+public String getData(String Excelname,String sheetName ,int rowNo, int cellNo) throws IOException {
 	
 	
 	try {
-		f = new File(System.getProperty("user.dir")+File.separator+"TestMappingExportAuto.xlsx");
+		f = new File(System.getProperty("user.dir")+File.separator+Excelname);
 	} catch (Exception e) {
 		System.out.println("could not access input data file");
 		e.printStackTrace();
@@ -370,9 +370,9 @@ public static String getScreenshot() {
 	
 }
 
-public static int getRowLength(String sheetName) throws IOException {
+public static int getRowLength(String Excelname,String sheetName) throws IOException {
 	try {
-		f = new File(System.getProperty("user.dir")+File.separator+"TestMappingExportAuto.xlsx");
+		f = new File(System.getProperty("user.dir")+File.separator+Excelname);
 	} catch (Exception e) {
 		System.out.println("could not access input data file");
 		e.printStackTrace();
@@ -390,9 +390,9 @@ public static int getRowLength(String sheetName) throws IOException {
 
 }
 
-public static int getLastCellNum(String sheetName,int i) throws IOException {
+public static int getLastCellNum(String Excelname,String sheetName,int i) throws IOException {
 	try {
-		f = new File(System.getProperty("user.dir")+File.separator+"TestMappingExportAuto.xlsx");
+		f = new File(System.getProperty("user.dir")+File.separator+Excelname);
 	} catch (Exception e) {
 		System.out.println("could not access input data file");
 		e.printStackTrace();
@@ -409,6 +409,8 @@ public static int getLastCellNum(String sheetName,int i) throws IOException {
 		return lastCellNum;
 
 }
+
+
 
 
 	

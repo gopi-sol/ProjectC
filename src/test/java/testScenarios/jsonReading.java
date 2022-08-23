@@ -107,11 +107,11 @@ public class jsonReading {
 
 								for (Entry<String, JsonElement> entry3 : entrySet3) {
 									System.out.println(entry3);
-									int fixedLength = tu.getRowLength("Export");
+									int fixedLength = tu.getRowLength("MappingRegression","Export");
 										for (int j = 0; j < fixedLength; j++) {
-											if (tu.getData("Export", j+1, 1).equalsIgnoreCase(entry3.getKey())) {
+											if (tu.getData("MappingRegression","Export", j+1, 1).equalsIgnoreCase(entry3.getKey())) {
 												
-												if (tu.getData("Export", j+1, 2).equalsIgnoreCase(entry3.getValue().toString().substring(1, entry3.getValue().toString().length()-1))) {
+												if (tu.getData("MappingRegression","Export", j+1, 2).equalsIgnoreCase(entry3.getValue().toString().substring(1, entry3.getValue().toString().length()-1))) {
 													
 													test.log(LogStatus.PASS,"Values Match");
 												} else {

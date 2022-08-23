@@ -68,7 +68,7 @@ public class mappingRegression extends BaseClass {
 	@BeforeTest()
 	public void setup() throws IOException {
 
-		initialization();
+		initialization("MappingRegression");
 
 		loginPage = new LoginPage();
 		homePage = new HomePage();
@@ -135,7 +135,7 @@ public class mappingRegression extends BaseClass {
 	@Test(priority = 2)
 	public void comparingImportedValues() throws InterruptedException, IOException {
 
-		urlLaunch();
+		urlLaunch("MappingRegression");
 
 		String title = driver.getTitle();
 
@@ -148,7 +148,7 @@ public class mappingRegression extends BaseClass {
 		}
 
 		loginPage.ClearUsPwd();
-		loginPage.LoginPageTest(tu.getData("Login", 1, 1), tu.getData("Login", 1, 2));
+		loginPage.LoginPageTest(tu.getData("MappingRegression","Login", 1, 1), tu.getData("MappingRegression","Login", 1, 2));
 
 		try {
 
@@ -266,27 +266,27 @@ public class mappingRegression extends BaseClass {
 		for (int i = 0; i < personalDetailsRows.size(); i++) {
 
 			List<WebElement> pDColumns = personalDetailsRows.get(i).findElements(By.tagName("td"));
-			int rowLength = tu.getRowLength("Source");
+			int rowLength = tu.getRowLength("MappingRegression","Source");
 
-			int lastCellNum = tu.getLastCellNum("Source", rowLength);
+			int lastCellNum = tu.getLastCellNum("MappingRegression","Source", rowLength);
 
 			for (int k = 1; k < rowLength; k++) {
 
 				for (int j = 0; j < pDColumns.size(); j++) {
 
 					if (pDColumns.get(j).getText().trim().replace(" ", "")
-							.equalsIgnoreCase(tu.getData("Source", k, 1))) {
+							.equalsIgnoreCase(tu.getData("MappingRegression","Source", k, 1))) {
 						test.log(LogStatus.INFO, "<b>" + "Source" + "</b>");
-						if (pDColumns.get(j + 1).getText().equals(tu.getData("Source", k, 2))) {
+						if (pDColumns.get(j + 1).getText().equals(tu.getData("MappingRegression","Source", k, 2))) {
 
 							utils.scrollIntoView(pDColumns.get(j + 1));
 							test.log(LogStatus.PASS, test.addScreenCapture(getAScreenshot()) + "Values match" + "-"
-									+ pDColumns.get(j + 1).getText() + " & " + tu.getData("Source", k, 2));
+									+ pDColumns.get(j + 1).getText() + " & " + tu.getData("MappingRegression","Source", k, 2));
 						} else {
 							utils.scrollIntoView(pDColumns.get(j + 1));
 
 							test.log(LogStatus.FAIL, test.addScreenCapture(getAScreenshot()) + "Values doesnot match"
-									+ "-" + pDColumns.get(j + 1).getText() + " & " + tu.getData("Source", k, 2));
+									+ "-" + pDColumns.get(j + 1).getText() + " & " + tu.getData("MappingRegression","Source", k, 2));
 						}
 
 					}
@@ -304,7 +304,7 @@ public class mappingRegression extends BaseClass {
 			
 			
 			List<WebElement> partnercolumn = personalDetailspartnerrows.get(i).findElements(By.tagName("td"));
-			int PDExcelrowLength = tu.getRowLength("Entity");
+			int PDExcelrowLength = tu.getRowLength("MappingRegression","Entity");
 			
 		//	int lastCellNum = tu.getLastCellNum("Entity", PDExcelrowLength);
 		
@@ -313,16 +313,16 @@ public class mappingRegression extends BaseClass {
 //			for (int j = 0; j < partnercolumn.size(); j++) {
 				
 				
-				if (partnercolumn.get(0).getText().trim().equalsIgnoreCase(tu.getData("Entity", k, 1))) {
+				if (partnercolumn.get(0).getText().trim().equalsIgnoreCase(tu.getData("MappingRegression","Entity", k, 1))) {
 					test.log(LogStatus.INFO, "<b>" + "Entity" + "</b>");
-					if (partnercolumn.get(1).getText().equals(tu.getData("Entity", k, 2))) {
+					if (partnercolumn.get(1).getText().equals(tu.getData("MappingRegression","Entity", k, 2))) {
 					
 					utils.scrollIntoView(partnercolumn.get(1));
-						test.log(LogStatus.PASS, test.addScreenCapture(getAScreenshot()) +"Values match"+"-"+partnercolumn.get(1).getText()+" & "+tu.getData("Entity", k, 2));
+						test.log(LogStatus.PASS, test.addScreenCapture(getAScreenshot()) +"Values match"+"-"+partnercolumn.get(1).getText()+" & "+tu.getData("MappingRegression","Entity", k, 2));
 					} else {
 						utils.scrollIntoView(partnercolumn.get(1));
 						
-						test.log(LogStatus.FAIL, test.addScreenCapture(getAScreenshot()) +"Values doesnot match"+"-"+partnercolumn.get(1).getText()+" & "+tu.getData("Entity", k, 2));
+						test.log(LogStatus.FAIL, test.addScreenCapture(getAScreenshot()) +"Values doesnot match"+"-"+partnercolumn.get(1).getText()+" & "+tu.getData("MappingRegression","Entity", k, 2));
 					}
 	}
 		
@@ -339,7 +339,7 @@ public class mappingRegression extends BaseClass {
 			
 			
 			List<WebElement> freefieldscolumn = freefieldsrows.get(i).findElements(By.tagName("td"));
-			int freefieldsrowLength = tu.getRowLength("Entity");
+			int freefieldsrowLength = tu.getRowLength("MappingRegression","Entity");
 			
 		//	int lastCellNum = tu.getLastCellNum("Entity", PDExcelrowLength);
 		
@@ -348,16 +348,16 @@ public class mappingRegression extends BaseClass {
 //			for (int j = 0; j < freefieldscolumn.size(); j++) {
 				
 				
-				if (freefieldscolumn.get(0).getText().trim().equalsIgnoreCase(tu.getData("Entity", k, 1))) {
+				if (freefieldscolumn.get(0).getText().trim().equalsIgnoreCase(tu.getData("MappingRegression","Entity", k, 1))) {
 					test.log(LogStatus.INFO, "<b>" + "Entity" + "</b>");
-					if (freefieldscolumn.get(1).getText().equals(tu.getData("Entity", k, 2))) {
+					if (freefieldscolumn.get(1).getText().equals(tu.getData("MappingRegression","Entity", k, 2))) {
 					
 					utils.scrollIntoView(freefieldscolumn.get(1));
-						test.log(LogStatus.PASS, test.addScreenCapture(getAScreenshot()) +"Values match"+"-"+freefieldscolumn.get(1).getText()+" & "+tu.getData("Entity", k, 2));
+						test.log(LogStatus.PASS, test.addScreenCapture(getAScreenshot()) +"Values match"+"-"+freefieldscolumn.get(1).getText()+" & "+tu.getData("MappingRegression","Entity", k, 2));
 					} else {
 						utils.scrollIntoView(freefieldscolumn.get(1));
 						
-						test.log(LogStatus.FAIL, test.addScreenCapture(getAScreenshot()) +"Values doesnot match"+"-"+freefieldscolumn.get(1).getText()+" & "+tu.getData("Entity", k, 2));
+						test.log(LogStatus.FAIL, test.addScreenCapture(getAScreenshot()) +"Values doesnot match"+"-"+freefieldscolumn.get(1).getText()+" & "+tu.getData("MappingRegression","Entity", k, 2));
 					}
 	}
 		
@@ -373,28 +373,28 @@ public class mappingRegression extends BaseClass {
 		for (int i = 0; i <freeFieldRows.size(); i++) {
 			
 			List<WebElement> fFColumns = freeFieldRows.get(i).findElements(By.tagName("td"));
-			int rowLength = tu.getRowLength("Formula");
+			int rowLength = tu.getRowLength("MappingRegression","Formula");
 			
-			int lastCellNum = tu.getLastCellNum("Formula", rowLength);
+			int lastCellNum = tu.getLastCellNum("MappingRegression","Formula", rowLength);
 			
 			for (int k = 1; k < rowLength+1; k++) {
 				
 //				for (int j = 0; j < fFColumns.size(); j++) {
 			
-					if (fFColumns.get(0).getText().trim().replace(" ", "").equalsIgnoreCase(tu.getData("Formula", k, 1))) {
+					if (fFColumns.get(0).getText().trim().replace(" ", "").equalsIgnoreCase(tu.getData("MappingRegression","Formula", k, 1))) {
 						test.log(LogStatus.INFO, "<b>" + "Formula" + "</b>");
-						if (fFColumns.get(1).getText().equals(tu.getData("Formula", k, 2))) {
+						if (fFColumns.get(1).getText().equals(tu.getData("MappingRegression","Formula", k, 2))) {
 			
 			
 							utils.scrollIntoView(fFColumns.get(1));
 			
-							test.log(LogStatus.PASS, test.addScreenCapture(getAScreenshot()) +"Values match"+"-"+fFColumns.get(1).getText()+" & "+tu.getData("Formula", k, 2));
+							test.log(LogStatus.PASS, test.addScreenCapture(getAScreenshot()) +"Values match"+"-"+fFColumns.get(1).getText()+" & "+tu.getData("MappingRegression","Formula", k, 2));
 						} else {
 			
 							utils.scrollIntoView(fFColumns.get(1));
 			
 			
-							test.log(LogStatus.FAIL, test.addScreenCapture(getAScreenshot()) +"Values doesnot match"+"-"+fFColumns.get(1).getText()+" & "+tu.getData("Formula", k, 2));
+							test.log(LogStatus.FAIL, test.addScreenCapture(getAScreenshot()) +"Values doesnot match"+"-"+fFColumns.get(1).getText()+" & "+tu.getData("MappingRegression","Formula", k, 2));
 			
 						}
 			
@@ -419,14 +419,14 @@ public class mappingRegression extends BaseClass {
 			addcolumn = AddressesRows.get(i).findElements(By.tagName("td"));
 			System.out.println("addColumn- " + addcolumn.size());
 
-			int ExcelrowLength = tu.getRowLength("Fixed");
+			int ExcelrowLength = tu.getRowLength("MappingRegression","Fixed");
 
 			// for (int j = 0; j < addcolumn.size(); j++) {
 
 			for (int k = 1; k < ExcelrowLength; k++) {
 
 				if (addcolumn.get(1).getText().trim().replace(" ", "")
-						.equalsIgnoreCase(tu.getData("Fixed", k, 1).split("/")[0])) {
+						.equalsIgnoreCase(tu.getData("MappingRegression","Fixed", k, 1).split("/")[0])) {
 					System.out.println("Entity- " + addcolumn.get(0).getText());
 					WebElement entity = addcolumn.get(0).findElement(By.tagName("a"));
 
@@ -446,32 +446,32 @@ public class mappingRegression extends BaseClass {
 							refRowColumns = refRows.get(l).findElements(By.tagName("td"));
 							System.out.println("refRowColumns- " + refRowColumns.size());
 
-							int fixedLength = tu.getRowLength("Fixed");
+							int fixedLength = tu.getRowLength("MappingRegression","Fixed");
 
 							for (int m = 1; m < fixedLength; m++) {
 
-								if (tu.getData("Fixed", m, 1).split("/")[0].trim().replace(" ", "")
+								if (tu.getData("MappingRegression","Fixed", m, 1).split("/")[0].trim().replace(" ", "")
 										.equalsIgnoreCase("Homeaddress")
 										&& refRowColumns.get(0).getText().trim().replace(" ", "").equalsIgnoreCase(
-												tu.getData("Fixed", m, 1).split("/")[2].trim().replace(" ", ""))) {
+												tu.getData("MappingRegression","Fixed", m, 1).split("/")[2].trim().replace(" ", ""))) {
 
 									test.log(LogStatus.INFO, "<b>" + "HomeAddress -" + "Reference - "
-											+ tu.getData("Fixed", m, 1).split("/")[2] + "</b>");
+											+ tu.getData("MappingRegression","Fixed", m, 1).split("/")[2] + "</b>");
 
-									if (refRowColumns.get(1).getText().equals(tu.getData("Fixed", m, 2))) {
+									if (refRowColumns.get(1).getText().equals(tu.getData("MappingRegression","Fixed", m, 2))) {
 
 										utils.scrollIntoView(refRowColumns.get(1));
 										test.log(LogStatus.PASS,
 												test.addScreenCapture(getAScreenshot()) + "Values match" + "-"
 														+ refRowColumns.get(1).getText() + " & "
-														+ tu.getData("Fixed", m, 2));
+														+ tu.getData("MappingRegression","Fixed", m, 2));
 									} else {
 										utils.scrollIntoView(refRowColumns.get(1));
 
 										test.log(LogStatus.FAIL,
 												test.addScreenCapture(getAScreenshot()) + "Values doesnot match" + "-"
 														+ refRowColumns.get(1).getText() + " & "
-														+ tu.getData("Fixed", m, 2));
+														+ tu.getData("MappingRegression","Fixed", m, 2));
 									}
 
 								}
@@ -492,32 +492,32 @@ public class mappingRegression extends BaseClass {
 							genRowColumns = genRows.get(j).findElements(By.tagName("td"));
 							System.out.println("genRowColumns- " + genRowColumns.size());
 
-							int fixedLength = tu.getRowLength("Fixed");
+							int fixedLength = tu.getRowLength("MappingRegression","Fixed");
 
 							for (int m = 1; m < fixedLength; m++) {
 
-								if (tu.getData("Fixed", m, 1).split("/")[0].trim().replace(" ", "")
+								if (tu.getData("MappingRegression","Fixed", m, 1).split("/")[0].trim().replace(" ", "")
 										.equalsIgnoreCase("Homeaddress")
 										&& genRowColumns.get(0).getText().trim().replace(" ", "").equalsIgnoreCase(
-												tu.getData("Fixed", m, 1).split("/")[2].trim().replace(" ", ""))) {
+												tu.getData("MappingRegression","Fixed", m, 1).split("/")[2].trim().replace(" ", ""))) {
 
 									test.log(LogStatus.INFO, "<b>" + "HomeAddress -" + "General -"
-											+ tu.getData("Fixed", m, 1).split("/")[2] + "</b>");
+											+ tu.getData("MappingRegression","Fixed", m, 1).split("/")[2] + "</b>");
 
-									if (genRowColumns.get(1).getText().equals(tu.getData("Fixed", m, 2))) {
+									if (genRowColumns.get(1).getText().equals(tu.getData("MappingRegression","Fixed", m, 2))) {
 
 										utils.scrollIntoView(genRowColumns.get(1));
 										test.log(LogStatus.PASS,
 												test.addScreenCapture(getAScreenshot()) + "Values match" + "-"
 														+ genRowColumns.get(1).getText() + " & "
-														+ tu.getData("Fixed", m, 2));
+														+ tu.getData("MappingRegression","Fixed", m, 2));
 									} else {
 										utils.scrollIntoView(genRowColumns.get(1));
 
 										test.log(LogStatus.FAIL,
 												test.addScreenCapture(getAScreenshot()) + "Values doesnot match" + "-"
 														+ genRowColumns.get(1).getText() + " & "
-														+ tu.getData("Fixed", m, 2));
+														+ tu.getData("MappingRegression","Fixed", m, 2));
 									}
 
 								}
@@ -540,32 +540,32 @@ public class mappingRegression extends BaseClass {
 							auditRowColumn = auditRows.get(j).findElements(By.tagName("td"));
 							System.out.println("auditRowColumn- " + auditRowColumn.size());
 
-							int fixedLength = tu.getRowLength("Fixed");
+							int fixedLength = tu.getRowLength("MappingRegression","Fixed");
 
 							for (int m = 1; m < fixedLength; m++) {
 
-								if (tu.getData("Fixed", m, 1).split("/")[0].trim().replace(" ", "")
+								if (tu.getData("MappingRegression","Fixed", m, 1).split("/")[0].trim().replace(" ", "")
 										.equalsIgnoreCase("Homeaddress")
 										&& auditRowColumn.get(0).getText().trim().replace(" ", "").equalsIgnoreCase(
-												tu.getData("Fixed", m, 1).split("/")[2].trim().replace(" ", ""))) {
+												tu.getData("MappingRegression","Fixed", m, 1).split("/")[2].trim().replace(" ", ""))) {
 
 									test.log(LogStatus.INFO, "<b>" + "HomeAddress -" + "Audit -"
-											+ tu.getData("Fixed", m, 1).split("/")[2] + "</b>");
+											+ tu.getData("MappingRegression","Fixed", m, 1).split("/")[2] + "</b>");
 
-									if (auditRowColumn.get(1).getText().equals(tu.getData("Fixed", m, 2))) {
+									if (auditRowColumn.get(1).getText().equals(tu.getData("MappingRegression","Fixed", m, 2))) {
 
 										utils.scrollIntoView(auditRowColumn.get(1));
 										test.log(LogStatus.PASS,
 												test.addScreenCapture(getAScreenshot()) + "Values match" + "-"
 														+ auditRowColumn.get(1).getText() + " & "
-														+ tu.getData("Fixed", m, 2));
+														+ tu.getData("MappingRegression","Fixed", m, 2));
 									} else {
 										utils.scrollIntoView(auditRowColumn.get(1));
 
 										test.log(LogStatus.FAIL,
 												test.addScreenCapture(getAScreenshot()) + "Values doesnot match" + "-"
 														+ auditRowColumn.get(1).getText() + " & "
-														+ tu.getData("Fixed", m, 2));
+														+ tu.getData("MappingRegression","Fixed", m, 2));
 									}
 
 								}
@@ -594,32 +594,32 @@ public class mappingRegression extends BaseClass {
 							refRowColumns = refRows.get(l).findElements(By.tagName("td"));
 							System.out.println("refRowColumns- " + refRowColumns.size());
 
-							int fixedLength = tu.getRowLength("Fixed");
+							int fixedLength = tu.getRowLength("MappingRegression","Fixed");
 
 							for (int m = 1; m < fixedLength; m++) {
 
-								if (tu.getData("Fixed", m, 1).split("/")[0].trim().replace(" ", "")
+								if (tu.getData("MappingRegression","Fixed", m, 1).split("/")[0].trim().replace(" ", "")
 										.equalsIgnoreCase("Workaddress")
 										&& refRowColumns.get(0).getText().trim().replace(" ", "").equalsIgnoreCase(
-												tu.getData("Fixed", m, 1).split("/")[2].trim().replace(" ", ""))) {
+												tu.getData("MappingRegression","Fixed", m, 1).split("/")[2].trim().replace(" ", ""))) {
 
 									test.log(LogStatus.INFO, "<b>" + "WorkAddress -" + "Reference - "
-											+ tu.getData("Fixed", m, 1).split("/")[2] + "</b>");
+											+ tu.getData("MappingRegression","Fixed", m, 1).split("/")[2] + "</b>");
 
-									if (refRowColumns.get(1).getText().equals(tu.getData("Fixed", m, 2))) {
+									if (refRowColumns.get(1).getText().equals(tu.getData("MappingRegression","Fixed", m, 2))) {
 
 										utils.scrollIntoView(refRowColumns.get(1));
 										test.log(LogStatus.PASS,
 												test.addScreenCapture(getAScreenshot()) + "Values match" + "-"
 														+ refRowColumns.get(1).getText() + " & "
-														+ tu.getData("Fixed", m, 2));
+														+ tu.getData("MappingRegression","Fixed", m, 2));
 									} else {
 										utils.scrollIntoView(refRowColumns.get(1));
 
 										test.log(LogStatus.FAIL,
 												test.addScreenCapture(getAScreenshot()) + "Values doesnot match" + "-"
 														+ refRowColumns.get(1).getText() + " & "
-														+ tu.getData("Fixed", m, 2));
+														+ tu.getData("MappingRegression","Fixed", m, 2));
 									}
 
 								}
@@ -640,32 +640,32 @@ public class mappingRegression extends BaseClass {
 							genRowColumns = genRows.get(j).findElements(By.tagName("td"));
 							System.out.println("genRowColumns- " + genRowColumns.size());
 
-							int fixedLength = tu.getRowLength("Fixed");
+							int fixedLength = tu.getRowLength("MappingRegression","Fixed");
 
 							for (int m = 1; m < fixedLength + 1; m++) {
 
-								if (tu.getData("Fixed", m, 1).split("/")[0].trim().replace(" ", "")
+								if (tu.getData("MappingRegression","Fixed", m, 1).split("/")[0].trim().replace(" ", "")
 										.equalsIgnoreCase("Workaddress")
 										&& genRowColumns.get(0).getText().trim().replace(" ", "").equalsIgnoreCase(
-												tu.getData("Fixed", m, 1).split("/")[2].trim().replace(" ", ""))) {
+												tu.getData("MappingRegression","Fixed", m, 1).split("/")[2].trim().replace(" ", ""))) {
 
 									test.log(LogStatus.INFO, "<b>" + "WorkAddress -" + "General -"
-											+ tu.getData("Fixed", m, 1).split("/")[2] + "</b>");
+											+ tu.getData("MappingRegression","Fixed", m, 1).split("/")[2] + "</b>");
 
-									if (genRowColumns.get(1).getText().equals(tu.getData("Fixed", m, 2))) {
+									if (genRowColumns.get(1).getText().equals(tu.getData("MappingRegression","Fixed", m, 2))) {
 
 										utils.scrollIntoView(genRowColumns.get(1));
 										test.log(LogStatus.PASS,
 												test.addScreenCapture(getAScreenshot()) + "Values match" + "-"
 														+ genRowColumns.get(1).getText() + " & "
-														+ tu.getData("Fixed", m, 2));
+														+ tu.getData("MappingRegression","Fixed", m, 2));
 									} else {
 										utils.scrollIntoView(genRowColumns.get(1));
 
 										test.log(LogStatus.FAIL,
 												test.addScreenCapture(getAScreenshot()) + "Values doesnot match" + "-"
 														+ genRowColumns.get(1).getText() + " & "
-														+ tu.getData("Fixed", m, 2));
+														+ tu.getData("MappingRegression","Fixed", m, 2));
 									}
 
 								}
@@ -693,32 +693,32 @@ public class mappingRegression extends BaseClass {
 							refRowColumns = refRows.get(l).findElements(By.tagName("td"));
 							System.out.println("refRowColumns- " + refRowColumns.size());
 
-							int fixedLength = tu.getRowLength("Fixed");
+							int fixedLength = tu.getRowLength("MappingRegression","Fixed");
 
 							for (int m = 1; m < fixedLength; m++) {
 
-								if (tu.getData("Fixed", m, 1).split("/")[0].trim().replace(" ", "")
+								if (tu.getData("MappingRegression","Fixed", m, 1).split("/")[0].trim().replace(" ", "")
 										.equalsIgnoreCase("General")
 										&& refRowColumns.get(0).getText().trim().replace(" ", "").equalsIgnoreCase(
-												tu.getData("Fixed", m, 1).split("/")[2].trim().replace(" ", ""))) {
+												tu.getData("MappingRegression","Fixed", m, 1).split("/")[2].trim().replace(" ", ""))) {
 
 									test.log(LogStatus.INFO, "<b>" + "General -" + "Reference - "
-											+ tu.getData("Fixed", m, 1).split("/")[2] + "</b>");
+											+ tu.getData("MappingRegression","Fixed", m, 1).split("/")[2] + "</b>");
 
-									if (refRowColumns.get(1).getText().equals(tu.getData("Fixed", m, 2))) {
+									if (refRowColumns.get(1).getText().equals(tu.getData("MappingRegression","Fixed", m, 2))) {
 
 										utils.scrollIntoView(refRowColumns.get(1));
 										test.log(LogStatus.PASS,
 												test.addScreenCapture(getAScreenshot()) + "Values match" + "-"
 														+ refRowColumns.get(1).getText() + " & "
-														+ tu.getData("Fixed", m, 2));
+														+ tu.getData("MappingRegression","Fixed", m, 2));
 									} else {
 										utils.scrollIntoView(refRowColumns.get(1));
 
 										test.log(LogStatus.FAIL,
 												test.addScreenCapture(getAScreenshot()) + "Values doesnot match" + "-"
 														+ refRowColumns.get(1).getText() + " & "
-														+ tu.getData("Fixed", m, 2));
+														+ tu.getData("MappingRegression","Fixed", m, 2));
 									}
 
 								}
@@ -739,32 +739,32 @@ public class mappingRegression extends BaseClass {
 							genRowColumns = genRows.get(j).findElements(By.tagName("td"));
 							System.out.println("genRowColumns- " + genRowColumns.size());
 
-							int fixedLength = tu.getRowLength("Fixed");
+							int fixedLength = tu.getRowLength("MappingRegression","Fixed");
 
 							for (int m = 1; m < fixedLength + 1; m++) {
 
-								if (tu.getData("Fixed", m, 1).split("/")[0].trim().replace(" ", "")
+								if (tu.getData("MappingRegression","Fixed", m, 1).split("/")[0].trim().replace(" ", "")
 										.equalsIgnoreCase("General")
 										&& genRowColumns.get(0).getText().trim().replace(" ", "").equalsIgnoreCase(
-												tu.getData("Fixed", m, 1).split("/")[2].trim().replace(" ", ""))) {
+												tu.getData("MappingRegression","Fixed", m, 1).split("/")[2].trim().replace(" ", ""))) {
 
 									test.log(LogStatus.INFO, "<b>" + "General -" + "General -"
-											+ tu.getData("Fixed", m, 1).split("/")[2] + "</b>");
+											+ tu.getData("MappingRegression","Fixed", m, 1).split("/")[2] + "</b>");
 
-									if (genRowColumns.get(1).getText().equals(tu.getData("Fixed", m, 2))) {
+									if (genRowColumns.get(1).getText().equals(tu.getData("MappingRegression","Fixed", m, 2))) {
 
 										utils.scrollIntoView(genRowColumns.get(1));
 										test.log(LogStatus.PASS,
 												test.addScreenCapture(getAScreenshot()) + "Values match" + "-"
 														+ genRowColumns.get(1).getText() + " & "
-														+ tu.getData("Fixed", m, 2));
+														+ tu.getData("MappingRegression","Fixed", m, 2));
 									} else {
 										utils.scrollIntoView(genRowColumns.get(1));
 
 										test.log(LogStatus.FAIL,
 												test.addScreenCapture(getAScreenshot()) + "Values doesnot match" + "-"
 														+ genRowColumns.get(1).getText() + " & "
-														+ tu.getData("Fixed", m, 2));
+														+ tu.getData("MappingRegression","Fixed", m, 2));
 									}
 
 								}
@@ -821,19 +821,19 @@ public class mappingRegression extends BaseClass {
 
 								for (Entry<String, JsonElement> entry3 : entrySet3) {
 									System.out.println(entry3);
-									int fixedLength = tu.getRowLength("Export");
+									int fixedLength = tu.getRowLength("MappingRegression","Export");
 									
 										for (int j = 0; j < fixedLength; j++) {
-											if (tu.getData("Export", j+1, 1).equalsIgnoreCase(entry3.getKey())) {
+											if (tu.getData("MappingRegression","Export", j+1, 1).equalsIgnoreCase(entry3.getKey())) {
 												test.log(LogStatus.INFO, "<b>" + "Export -" 
-														+ tu.getData("Export", j+1, 1) + "</b>");
+														+ tu.getData("MappingRegression","Export", j+1, 1) + "</b>");
 												
-												if (tu.getData("Export", j+1, 2).equalsIgnoreCase(entry3.getValue().toString().substring(1, entry3.getValue().toString().length()-1))) {
-													test.log(LogStatus.PASS,"Expected Value -"+tu.getData("Export", j+1, 2)+"  "+"Actual Value -"+entry3.getValue().toString().substring(1, entry3.getValue().toString().length()-1));
+												if (tu.getData("MappingRegression","Export", j+1, 2).equalsIgnoreCase(entry3.getValue().toString().substring(1, entry3.getValue().toString().length()-1))) {
+													test.log(LogStatus.PASS,"Expected Value -"+tu.getData("MappingRegression","Export", j+1, 2)+"  "+"Actual Value -"+entry3.getValue().toString().substring(1, entry3.getValue().toString().length()-1));
 													test.log(LogStatus.PASS,"Values Match");
 												} else {
 													test.log(LogStatus.FAIL,"Values doesn't Match");
-													test.log(LogStatus.PASS,"Expected Value -"+tu.getData("Export", j+1, 2)+"  "+"Actual Value -"+entry3.getValue().toString().substring(1, entry3.getValue().toString().length()-1));
+													test.log(LogStatus.PASS,"Expected Value -"+tu.getData("MappingRegression","Export", j+1, 2)+"  "+"Actual Value -"+entry3.getValue().toString().substring(1, entry3.getValue().toString().length()-1));
 												}
 											}
 										}
