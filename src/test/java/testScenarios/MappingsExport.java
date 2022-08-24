@@ -144,8 +144,8 @@ static List<WebElement> mappingCleanUpRows,mappingCleanUpColumns=null;
 			mappingCleanUpColumns = mappingCleanUpRows.get(i).findElements(By.tagName("td"));
 		
 			System.out.println(mappingCleanUpColumns.get(0).getText());
-			System.out.println(mappingCleanUpColumns.get(0).getText().contains("22-08-2022"));
-			if (mappingCleanUpColumns.get(0).getText().contains("22-08-2022")) {
+			System.out.println(mappingCleanUpColumns.get(0).getText().contains("23-08-2022"));
+			if (mappingCleanUpColumns.get(0).getText().contains("23-08-2022")) {
 				System.out.println("Entered if");
 				System.out.println(mappingCleanUpColumns.get(1).getText());
 				
