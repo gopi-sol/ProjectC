@@ -164,7 +164,7 @@ static List<WebElement> mappingCleanUpRows,mappingCleanUpColumns=null;
 				System.out.println(mappingCleanUpColumns.get(1)+" is clicked");
 				StringSelection file = new StringSelection(absolutePathExcel+ File.separator + ExcelName);
 
-				Toolkit.getDefaultToolkit().getSystemClipboard().setContents(file, this);
+				Toolkit.getDefaultToolkit().getSystemClipboard().setContents(file, null);
 
 				Robot rb = null;
 
