@@ -3,7 +3,10 @@ package testScenarios;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
@@ -39,7 +42,7 @@ import pageObjects.SharepointPage;
 import testUtils.ElementUtil;
 import testUtils.TestUtil;
 
-public class MappingsExport extends BaseClass {
+public class MappingsExport extends BaseClass implements ClipboardOwner {
 
 	
 	TestUtil tu;
@@ -144,8 +147,8 @@ static List<WebElement> mappingCleanUpRows,mappingCleanUpColumns=null;
 			mappingCleanUpColumns = mappingCleanUpRows.get(i).findElements(By.tagName("td"));
 		
 			System.out.println(mappingCleanUpColumns.get(0).getText());
-			System.out.println(mappingCleanUpColumns.get(0).getText().contains("23-08-2022"));
-			if (mappingCleanUpColumns.get(0).getText().contains("23-08-2022")) {
+			System.out.println(mappingCleanUpColumns.get(0).getText().contains("24-08-2022"));
+			if (mappingCleanUpColumns.get(0).getText().contains("24-08-2022")) {
 				System.out.println("Entered if");
 				System.out.println(mappingCleanUpColumns.get(1).getText());
 				
@@ -161,7 +164,7 @@ static List<WebElement> mappingCleanUpRows,mappingCleanUpColumns=null;
 				System.out.println(mappingCleanUpColumns.get(1)+" is clicked");
 				StringSelection file = new StringSelection(absolutePathExcel+ File.separator + ExcelName);
 
-				Toolkit.getDefaultToolkit().getSystemClipboard().setContents(file, null);
+				Toolkit.getDefaultToolkit().getSystemClipboard().setContents(file, this);
 
 				Robot rb = null;
 
@@ -821,6 +824,11 @@ static List<WebElement> mappingCleanUpRows,mappingCleanUpColumns=null;
 
 		// driver.quit();
 
+	}
+
+	public void lostOwnership(Clipboard clipboard, Transferable contents) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
