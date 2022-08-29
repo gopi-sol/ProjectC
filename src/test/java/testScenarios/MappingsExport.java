@@ -118,8 +118,7 @@ public class MappingsExport extends BaseClass {
 			driver.switchTo().frame(driver.findElement(By.id("kop")));
 			test.log(LogStatus.PASS,
 
-					test.addScreenCapture(getAScreenshot())
-							+ "Logged in");
+					test.addScreenCapture(getAScreenshot()) + "Logged in");
 
 		} catch (Exception e) {
 
@@ -137,26 +136,23 @@ public class MappingsExport extends BaseClass {
 		driver.findElement(By.xpath("//div[@id='headerdiv']")).click();
 		test.log(LogStatus.PASS,
 
-				test.addScreenCapture(getAScreenshot())
-						+ "Mapping clean up page");
+				test.addScreenCapture(getAScreenshot()) + "Mapping clean up page");
 
-		
 		utils.waitForElementToBeClickable(mCLPage.getStartDateTextBox(), 60);
 		utils.getElement(mCLPage.getStartDateTextBox()).clear();
 		utils.getElement(mCLPage.getStartDateTextBox()).sendKeys(mCLPage.yesterdayDate());
-		
+
 		utils.waitForElementToBeClickable(mCLPage.getEndDateTextBox(), 60);
 		utils.getElement(mCLPage.getEndDateTextBox()).clear();
 		utils.getElement(mCLPage.getEndDateTextBox()).sendKeys(mCLPage.currentDate());
-		
+
 		utils.waitForElementToBeClickable(mCLPage.getStatusDropdown(), 60);
-		utils.doSelectValuesByVisibleText(mCLPage.getStatusDropdown(),"Open");
+		utils.doSelectValuesByVisibleText(mCLPage.getStatusDropdown(), "Open");
 
 		utils.waitForElementToBeClickable(mCLPage.getMappingCleanUpRows(), 60);
 		mappingCleanUpRows = driver.findElements(mCLPage.getMappingCleanUpRows());
 		System.out.println(mappingCleanUpRows.size());
-		
-		
+
 		File fExcel = new File(System.getProperty("user.dir"));
 
 		String absolutePathExcel = fExcel.getAbsolutePath();
@@ -167,7 +163,7 @@ public class MappingsExport extends BaseClass {
 
 			System.out.println(mappingCleanUpColumns.get(0).getText());
 			System.out.println(mappingCleanUpColumns.get(0).getText().contains(mCLPage.currentDate()));
-			
+
 			if (mappingCleanUpColumns.get(0).getText().contains(mCLPage.currentDate())) {
 				System.out.println("Entered if");
 				System.out.println(mappingCleanUpColumns.get(1).getText());
@@ -177,53 +173,53 @@ public class MappingsExport extends BaseClass {
 				System.out.println(mappingCleanUpColumns.get(1) + " is about to be clicked");
 
 				WebElement toClick = mappingCleanUpColumns.get(1).findElement(By.tagName("a"));
-//				toClick.click();
-//				Thread.sleep(5000);
-//
-//				System.out.println(mappingCleanUpColumns.get(1) + " is clicked");
-//				StringSelection file = new StringSelection(absolutePathExcel + File.separator + ExcelName);
-//				Clipboard systemClipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-//				systemClipboard.setContents(file, null);
-//				
-//				Robot rb = null;
-//
-//				try {
-//					rb = new Robot();
-//				} catch (AWTException e) {
-//
-//					e.printStackTrace();
-//				}
-//
-//				rb.setAutoDelay(2000); // Similar to thread.sleep
-//
-//				rb.keyPress(KeyEvent.VK_CONTROL);
-//				rb.keyPress(KeyEvent.VK_V);
-//				rb.keyRelease(KeyEvent.VK_V);
-//				rb.keyRelease(KeyEvent.VK_CONTROL);
-//
-//				rb.setAutoDelay(2000);
-//
-//				rb.keyPress(KeyEvent.VK_ENTER);
-//				rb.keyRelease(KeyEvent.VK_ENTER);
-//
-//				Thread.sleep(5000);
-//				break;
-			}else {
+				// toClick.click();
+				// Thread.sleep(5000);
+				//
+				// System.out.println(mappingCleanUpColumns.get(1) + " is clicked");
+				// StringSelection file = new StringSelection(absolutePathExcel + File.separator
+				// + ExcelName);
+				// Clipboard systemClipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+				// systemClipboard.setContents(file, null);
+				//
+				// Robot rb = null;
+				//
+				// try {
+				// rb = new Robot();
+				// } catch (AWTException e) {
+				//
+				// e.printStackTrace();
+				// }
+				//
+				// rb.setAutoDelay(2000); // Similar to thread.sleep
+				//
+				// rb.keyPress(KeyEvent.VK_CONTROL);
+				// rb.keyPress(KeyEvent.VK_V);
+				// rb.keyRelease(KeyEvent.VK_V);
+				// rb.keyRelease(KeyEvent.VK_CONTROL);
+				//
+				// rb.setAutoDelay(2000);
+				//
+				// rb.keyPress(KeyEvent.VK_ENTER);
+				// rb.keyRelease(KeyEvent.VK_ENTER);
+				//
+				// Thread.sleep(5000);
+				// break;
+			} else {
 				System.out.println("No Files available on this Date");
 				test.log(LogStatus.FAIL,
 
-						test.addScreenCapture(getAScreenshot()) + 
-								 " No Files available on this Date");
-				
+						test.addScreenCapture(getAScreenshot()) + " No Files available on this Date");
+
 				Assert.assertTrue(mappingCleanUpColumns.get(0).getText().contains(mCLPage.currentDate()));
-				
+
 			}
 
 		}
-//* 
-		
+		// *
+
 		for (int i = 0; i < tu.getRowLength(ExcelName, "Mapping templates "); i++) {
-System.out.println("Entered for");
+			System.out.println("Entered for");
 			driver.switchTo().defaultContent();
 			utils.waitForElementToBeClickable(homePage.getMandantBrowser(), 90);
 			utils.getElement(homePage.getMandantBrowser()).click();
@@ -374,11 +370,11 @@ System.out.println("Entered for");
 							File f = new File(System.getProperty("user.dir") + File.separator + "Mappings"
 									+ File.separator + mandantFolder);
 							f.mkdir();
-							
-							if (f.exists()==true) {
-								System.out.println(f+ " is created");
+
+							if (f.exists() == true) {
+								System.out.println(f + " is created");
 							} else {
-								System.out.println(f+ " is not created");
+								System.out.println(f + " is not created");
 							}
 
 							String absolutePathm = f.getAbsolutePath();
@@ -391,8 +387,9 @@ System.out.println("Entered for");
 							Toolkit.getDefaultToolkit().getSystemClipboard().setContents(fileO, null);
 
 							Robot rb = null;
-							
-//							Toolkit.getDefaultToolkit().getSystemSelection().setContents(fileO, (ClipboardOwner) this);
+
+							// Toolkit.getDefaultToolkit().getSystemSelection().setContents(fileO,
+							// (ClipboardOwner) this);
 
 							try {
 								rb = new Robot();
@@ -430,7 +427,7 @@ System.out.println("Entered for");
 							driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 							driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 							String SharepointLoginpagetitle = driver.getTitle();
-							
+
 							if (SharepointLoginpagetitle.equals("Sign in to your account")) {
 
 								utils.waitForElementToBeClickable(driver.findElement(sharepointPage.getUsername()), 30);
@@ -512,7 +509,7 @@ System.out.println("Entered for");
 										Thread.sleep(3000);
 										break;
 									}
-									
+
 								}
 
 							} else {
@@ -652,7 +649,8 @@ System.out.println("Entered for");
 											if (folders.get(k2).getText().equals("MappingExport_" + dateStamp)) {
 
 												folders.get(k2).click();
-												System.out.println("MappingExport_" + dateStamp +" is created and Clicked");
+												System.out.println(
+														"MappingExport_" + dateStamp + " is created and Clicked");
 												Thread.sleep(3000);
 												break;
 											}
@@ -664,8 +662,8 @@ System.out.println("Entered for");
 								}
 							}
 
-						Thread.sleep(2000);
-					
+							Thread.sleep(2000);
+
 							utils.waitForElementToBeClickable(
 									driver.findElement(By.xpath("//span[contains(text(),'Upload')]")), 90);
 							driver.findElement(By.xpath("//span[contains(text(),'Upload')]")).click();
@@ -700,7 +698,7 @@ System.out.println("Entered for");
 							rb1.keyRelease(KeyEvent.VK_ENTER);
 							rb1.setAutoDelay(2000);
 							rb1.setAutoDelay(2000);
-							
+
 							rb1.keyPress(KeyEvent.VK_F5);
 							rb1.keyRelease(KeyEvent.VK_F5);
 							Thread.sleep(2000);
@@ -709,18 +707,24 @@ System.out.println("Entered for");
 
 							utils.visibilityOfAllElements(driver.findElements(sharepointPage.getFolders()), 120);
 							folders = driver.findElements(sharepointPage.getFolders());
-							System.out.println( "going to delete"+folders.size());
+							System.out.println("going to delete" + folders.size());
 							for (int k = 0; k < folders.size(); k++) {
+								System.out.println(folders.get(k).getText());
 
-								if (folders.get(k).getText().split(".")[0].equals(mappingName)) {
+								String mappingUploaded = folders.get(k).getText().split(".")[0];
+								System.out.println(mappingUploaded);
+
+								if (mappingUploaded.equals(mappingName)) {
 									System.out.println(mappingName);
 									System.out.println(mappingName + " is Uploaded");
 									test.log(LogStatus.PASS,
 											test.addScreenCapture(getAScreenshot())
 													+ tu.getData(ExcelName, "Mapping templates ", i + 1, 1)
 													+ "- mapping uploaded");
-									
-									driver.findElement(By.xpath("//*[@id=\"O365_MainLink_MePhoto\"]/div/div/div/div/div[2]")).click();
+
+									driver.findElement(
+											By.xpath("//*[@id=\"O365_MainLink_MePhoto\"]/div/div/div/div/div[2]"))
+											.click();
 									driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 									driver.findElement(By.xpath("//*[@id=\"mectrl_body_signOut\"]")).click();
 									driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -820,7 +824,8 @@ System.out.println("Entered for");
 									Thread.sleep(5000);
 									break;
 
-								} else if (!mappingName.equals(folders.get(k).getText().split(".")[0]) && k == folders.size() - 1) {
+								} else if (!mappingName.equals(folders.get(k).getText().split(".")[0])
+										&& k == folders.size() - 1) {
 
 									System.out.println(mappingName);
 									System.out.println(mappingName + " is not Uploaded");
@@ -891,7 +896,7 @@ System.out.println("Entered for");
 			}
 
 		}
-		
+
 		homePage.clickMappingCleanUpLogging();
 		driver.switchTo().frame("mainwindow");
 		utils.waitForElementToBeClickable(driver.findElement(By.xpath("//div[@id='headerdiv']")), 30);
@@ -900,21 +905,21 @@ System.out.println("Entered for");
 		utils.waitForElementToBeClickable(mCLPage.getMappingCleanUpRows(), 60);
 		mappingCleanUpRows = driver.findElements(mCLPage.getMappingCleanUpRows());
 		System.out.println(mappingCleanUpRows.size());
-		
+
 		for (int i = 0; i < mappingCleanUpRows.size(); i++) {
 
 			mappingCleanUpColumns = mappingCleanUpRows.get(i).findElements(By.tagName("td"));
-			
+
 			if (mappingCleanUpColumns.get(1).getText().equals(ExcelName)) {
 				List<WebElement> toClick = mappingCleanUpColumns.get(2).findElements(By.tagName("button"));
 				toClick.get(1).click();
-				System.out.println(toClick.get(1).getText()+ " is going to be clicked");
+				System.out.println(toClick.get(1).getText() + " is going to be clicked");
 				Thread.sleep(5000);
 				break;
 			}
 
 		}
-		
+
 		driver.switchTo().defaultContent();
 		driver.switchTo().frame("kop");
 		utils.getElement(mappingPage.getLogOut()).click();
@@ -938,10 +943,8 @@ System.out.println("Entered for");
 	@AfterTest
 	public void tearDown() {
 
-//		 driver.quit();
+		// driver.quit();
 
 	}
-
-
 
 }
