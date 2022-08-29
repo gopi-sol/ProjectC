@@ -900,6 +900,7 @@ public class MappingsExport extends BaseClass {
 			if (mappingCleanUpColumns.get(1).getText().equals(ExcelName)) {
 				List<WebElement> toClick = mappingCleanUpColumns.get(2).findElements(By.tagName("button"));
 				toClick.get(1).click();
+				System.out.println(toClick.get(1).getText()+ " is going to be clicked");
 				Thread.sleep(5000);
 				break;
 			}
