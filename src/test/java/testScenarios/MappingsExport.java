@@ -466,6 +466,8 @@ public class MappingsExport extends BaseClass {
 
 							utils.visibilityOfAllElements(driver.findElements(sharepointPage.getFolders()), 90);
 							folders = driver.findElements(sharepointPage.getFolders());
+if (folders.size()>0) {
+	
 
 							for (int k = 0; k < folders.size(); k++) {
 								System.out.println(folders.get(k).getText());
@@ -499,6 +501,26 @@ public class MappingsExport extends BaseClass {
 									folders = driver.findElements(sharepointPage.getFolders());
 								}
 							}
+}else {
+	utils.waitForElementToBeClickable(driver.findElement(sharepointPage.getNew()),
+			90);
+	driver.findElement(sharepointPage.getNew()).click();
+	utils.waitForElementToBeClickable(
+			driver.findElement(sharepointPage.getFolder()), 90);
+	driver.findElement(sharepointPage.getFolder()).click();
+	Thread.sleep(2000);
+	driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+	utils.waitForElementToBeClickable(sharepointPage.getFolderName(), 90);
+	driver.findElement(sharepointPage.getFolderName()).sendKeys("Test");
+	utils.waitForElementToBeClickable(
+			driver.findElement(By.xpath("//span[contains(text(),'Create')]")), 90);
+	driver.findElement(By.xpath("//span[contains(text(),'Create')]")).click();
+	Thread.sleep(2000);
+	driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	utils.visibilityOfAllElements(driver.findElements(sharepointPage.getFolders()),
+			90);
+	folders = driver.findElements(sharepointPage.getFolders());
+}
 							driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 							// utils.visibilityOfAllElements(driver.findElements(sharepointPage.getFolders()),
 							// 90);
