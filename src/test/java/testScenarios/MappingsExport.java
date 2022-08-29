@@ -690,14 +690,18 @@ public class MappingsExport extends BaseClass {
 							rb1.setAutoDelay(2000);
 							rb1.keyPress(KeyEvent.VK_ENTER);
 							rb1.keyRelease(KeyEvent.VK_ENTER);
-
+							rb1.setAutoDelay(2000);
+							rb1.setAutoDelay(2000);
+							
+							rb1.keyPress(KeyEvent.VK_F5);
+							rb1.keyRelease(KeyEvent.VK_F5);
 							Thread.sleep(2000);
 
 							Thread.sleep(5000);
 
 							utils.visibilityOfAllElements(driver.findElements(sharepointPage.getFolders()), 120);
 							folders = driver.findElements(sharepointPage.getFolders());
-
+							System.out.println( "going to delete"+folders.size());
 							for (int k = 0; k < folders.size(); k++) {
 
 								if (folders.get(k).getText().equals(mappingName)) {
