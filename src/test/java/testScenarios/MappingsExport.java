@@ -169,37 +169,37 @@ public class MappingsExport extends BaseClass {
 				System.out.println(mappingCleanUpColumns.get(1) + " is about to be clicked");
 
 				WebElement toClick = mappingCleanUpColumns.get(1).findElement(By.tagName("a"));
-				toClick.click();
-				Thread.sleep(5000);
-
-				System.out.println(mappingCleanUpColumns.get(1) + " is clicked");
-				StringSelection file = new StringSelection(absolutePathExcel + File.separator + ExcelName);
-				Clipboard systemClipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-				systemClipboard.setContents(file, null);
-				
-				Robot rb = null;
-
-				try {
-					rb = new Robot();
-				} catch (AWTException e) {
-
-					e.printStackTrace();
-				}
-
-				rb.setAutoDelay(2000); // Similar to thread.sleep
-
-				rb.keyPress(KeyEvent.VK_CONTROL);
-				rb.keyPress(KeyEvent.VK_V);
-				rb.keyRelease(KeyEvent.VK_V);
-				rb.keyRelease(KeyEvent.VK_CONTROL);
-
-				rb.setAutoDelay(2000);
-
-				rb.keyPress(KeyEvent.VK_ENTER);
-				rb.keyRelease(KeyEvent.VK_ENTER);
-
-				Thread.sleep(5000);
-				break;
+//				toClick.click();
+//				Thread.sleep(5000);
+//
+//				System.out.println(mappingCleanUpColumns.get(1) + " is clicked");
+//				StringSelection file = new StringSelection(absolutePathExcel + File.separator + ExcelName);
+//				Clipboard systemClipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+//				systemClipboard.setContents(file, null);
+//				
+//				Robot rb = null;
+//
+//				try {
+//					rb = new Robot();
+//				} catch (AWTException e) {
+//
+//					e.printStackTrace();
+//				}
+//
+//				rb.setAutoDelay(2000); // Similar to thread.sleep
+//
+//				rb.keyPress(KeyEvent.VK_CONTROL);
+//				rb.keyPress(KeyEvent.VK_V);
+//				rb.keyRelease(KeyEvent.VK_V);
+//				rb.keyRelease(KeyEvent.VK_CONTROL);
+//
+//				rb.setAutoDelay(2000);
+//
+//				rb.keyPress(KeyEvent.VK_ENTER);
+//				rb.keyRelease(KeyEvent.VK_ENTER);
+//
+//				Thread.sleep(5000);
+//				break;
 			}else {
 				System.out.println("No Files available on this Date");
 				test.log(LogStatus.FAIL,
@@ -212,7 +212,7 @@ public class MappingsExport extends BaseClass {
 			}
 
 		}
-//* "TestMappingExportAuto.xlsx" 
+//* 
 		
 		for (int i = 0; i < tu.getRowLength(ExcelName, "Mapping templates "); i++) {
 
@@ -794,7 +794,7 @@ public class MappingsExport extends BaseClass {
 									String text = alert.getText();
 
 									System.out.println(alert);
-									alert.accept();
+									alert.dismiss();
 
 									System.out.println("Mapping Delete");
 									test.log(LogStatus.PASS,
