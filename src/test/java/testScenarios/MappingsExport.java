@@ -711,7 +711,7 @@ public class MappingsExport extends BaseClass {
 							for (int k = 0; k < folders.size(); k++) {
 								System.out.println(folders.get(k).getText());
 
-								String mappingUploaded = folders.get(k).getText().split(".")[0];
+								String mappingUploaded = folders.get(k).getText().split("[.]")[0];
 								System.out.println(mappingUploaded);
 
 								if (mappingUploaded.equals(mappingName)) {
