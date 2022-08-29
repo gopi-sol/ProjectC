@@ -359,7 +359,7 @@ public class MappingsExport extends BaseClass {
 
 							utils.waitForElementToBeVisible(mappingPage.getExportBtn(), 90);
 							utils.getElement(mappingPage.getExportBtn()).click();
-							Thread.sleep(8000);
+							Thread.sleep(2000);
 
 							File fm = new File(System.getProperty("user.dir") + File.separator + "Mappings");
 							fm.mkdir();
@@ -420,10 +420,10 @@ public class MappingsExport extends BaseClass {
 							driver.switchTo().defaultContent();
 							driver.switchTo().frame("kop");
 							utils.getElement(mappingPage.getLogOut()).click();
-							Thread.sleep(5000);
+							Thread.sleep(2000);
 							driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 							driver.get(tu.getData("TestMappingExportAuto.xlsx", "Sharepoint", 1, 0));
-							Thread.sleep(5000);
+							Thread.sleep(2000);
 							driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 							driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 							String SharepointLoginpagetitle = driver.getTitle();
@@ -435,7 +435,7 @@ public class MappingsExport extends BaseClass {
 										.sendKeys(tu.getData("TestMappingExportAuto.xlsx", "Sharepoint", 1, 1));
 								System.out.println(tu.getData("TestMappingExportAuto.xlsx", "Sharepoint", 1, 1));
 								driver.findElement(sharepointPage.getSubmit()).click();
-								Thread.sleep(5000);
+								Thread.sleep(2000);
 								driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 								driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 								utils.waitForElementToBeClickable(driver.findElement(sharepointPage.getPassword()), 30);
@@ -452,7 +452,7 @@ public class MappingsExport extends BaseClass {
 								// driver.manage().timeouts().implicitlyWait(120,
 								// TimeUnit.SECONDS);
 								// driver.findElement(sharepointPage.getSubmit()).click();
-								Thread.sleep(5000);
+								Thread.sleep(2000);
 								driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 								driver.findElement(sharepointPage.getSubmit()).click();
 
@@ -485,7 +485,7 @@ public class MappingsExport extends BaseClass {
 								driver.findElement(sharepointPage.getNew()).click();
 								utils.waitForElementToBeClickable(driver.findElement(sharepointPage.getFolder()), 90);
 								driver.findElement(sharepointPage.getFolder()).click();
-								Thread.sleep(10000);
+								Thread.sleep(2000);
 								driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 								utils.waitForElementToBeClickable(sharepointPage.getFolderName(), 90);
 								driver.findElement(sharepointPage.getFolderName())
@@ -532,7 +532,7 @@ public class MappingsExport extends BaseClass {
 										utils.waitForElementToBeClickable(
 												driver.findElement(sharepointPage.getFolder()), 90);
 										driver.findElement(sharepointPage.getFolder()).click();
-										Thread.sleep(10000);
+										Thread.sleep(2000);
 										driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 										utils.waitForElementToBeClickable(sharepointPage.getFolderName(), 90);
 										driver.findElement(sharepointPage.getFolderName()).sendKeys(
@@ -540,7 +540,7 @@ public class MappingsExport extends BaseClass {
 										utils.waitForElementToBeClickable(
 												driver.findElement(By.xpath("//span[contains(text(),'Create')]")), 90);
 										driver.findElement(By.xpath("//span[contains(text(),'Create')]")).click();
-										Thread.sleep(10000);
+										Thread.sleep(2000);
 										driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 										utils.visibilityOfAllElements(driver.findElements(sharepointPage.getFolders()),
 												90);
@@ -576,7 +576,7 @@ public class MappingsExport extends BaseClass {
 								utils.waitForElementToBeClickable(
 										driver.findElement(By.xpath("//span[contains(text(),'Folder')]")), 90);
 								driver.findElement(By.xpath("//span[contains(text(),'Folder')]")).click();
-								Thread.sleep(10000);
+								Thread.sleep(2000);
 								driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 								utils.waitForElementToBeClickable(
 										driver.findElement(By.xpath("//input[@aria-label='Enter your folder name']")),
@@ -588,7 +588,7 @@ public class MappingsExport extends BaseClass {
 								utils.waitForElementToBeClickable(
 										driver.findElement(By.xpath("//span[contains(text(),'Create')]")), 90);
 								driver.findElement(By.xpath("//span[contains(text(),'Create')]")).click();
-								Thread.sleep(10000);
+								Thread.sleep(2000);
 								driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 								// utils.visibilityOfAllElements(driver.findElements(sharepointPage.getFolders()),
 								// 90);
@@ -627,7 +627,7 @@ public class MappingsExport extends BaseClass {
 										utils.waitForElementToBeClickable(
 												driver.findElement(By.xpath("//span[contains(text(),'Folder')]")), 90);
 										driver.findElement(By.xpath("//span[contains(text(),'Folder')]")).click();
-										Thread.sleep(10000);
+										Thread.sleep(2000);
 										driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 										utils.waitForElementToBeClickable(driver.findElement(
 												By.xpath("//input[@aria-label='Enter your folder name']")), 90);
@@ -637,7 +637,7 @@ public class MappingsExport extends BaseClass {
 										utils.waitForElementToBeClickable(
 												driver.findElement(By.xpath("//span[contains(text(),'Create')]")), 90);
 										driver.findElement(By.xpath("//span[contains(text(),'Create')]")).click();
-										Thread.sleep(10000);
+										Thread.sleep(2000);
 										driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 										utils.visibilityOfAllElements(driver.findElements(sharepointPage.getFolders()),
 												90);
@@ -670,7 +670,7 @@ public class MappingsExport extends BaseClass {
 							utils.waitForElementToBeClickable(
 									driver.findElement(By.xpath("//span[contains(text(),'Files')]")), 90);
 							driver.findElement(By.xpath("//span[contains(text(),'Files')]")).click();
-							Thread.sleep(10000);
+							
 							Thread.sleep(5000);
 							Toolkit.getDefaultToolkit().getSystemClipboard().setContents(fileO, null);
 
