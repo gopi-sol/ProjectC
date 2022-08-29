@@ -464,7 +464,7 @@ public class MappingsExport extends BaseClass {
 							utils.waitForElementToBeClickable(sharepointPage.getMyFiles(), 120);
 							// driver.findElement(sharepointPage.getMyFiles()).click();
 
-							utils.visibilityOfAllElements(driver.findElements(sharepointPage.getFolders()), 90);
+//							utils.visibilityOfAllElements(driver.findElements(sharepointPage.getFolders()), 90);
 							folders = driver.findElements(sharepointPage.getFolders());
 if (folders.size()>0) {
 	
