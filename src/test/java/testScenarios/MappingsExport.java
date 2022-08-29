@@ -116,6 +116,10 @@ public class MappingsExport extends BaseClass {
 		try {
 
 			driver.switchTo().frame(driver.findElement(By.id("kop")));
+			test.log(LogStatus.PASS,
+
+					test.addScreenCapture(getAScreenshot())
+							+ "Logged in");
 
 		} catch (Exception e) {
 
@@ -131,6 +135,10 @@ public class MappingsExport extends BaseClass {
 		driver.switchTo().frame("mainwindow");
 		utils.waitForElementToBeClickable(driver.findElement(By.xpath("//div[@id='headerdiv']")), 30);
 		driver.findElement(By.xpath("//div[@id='headerdiv']")).click();
+		test.log(LogStatus.PASS,
+
+				test.addScreenCapture(getAScreenshot())
+						+ "Mapping clean up page");
 
 		
 		utils.waitForElementToBeClickable(mCLPage.getStartDateTextBox(), 60);
@@ -215,7 +223,7 @@ public class MappingsExport extends BaseClass {
 //* 
 		
 		for (int i = 0; i < tu.getRowLength(ExcelName, "Mapping templates "); i++) {
-
+System.out.println("Entered for");
 			driver.switchTo().defaultContent();
 			utils.waitForElementToBeClickable(homePage.getMandantBrowser(), 90);
 			utils.getElement(homePage.getMandantBrowser()).click();
