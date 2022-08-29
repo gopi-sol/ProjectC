@@ -1,265 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="1" failed="0" ignored="0" total="1" passed="0">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="92658" started-at="2022-08-23T07:51:24Z" finished-at="2022-08-23T07:52:57Z">
+  <suite name="Default suite" duration-ms="91396" started-at="2022-08-29T12:26:45Z" finished-at="2022-08-29T12:28:16Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="92658" started-at="2022-08-23T07:51:24Z" finished-at="2022-08-23T07:52:57Z">
-      <class name="testScenarios.MappingsExport">
-        <test-method status="PASS" signature="startTest()[pri:0, instance:testScenarios.MappingsExport@59ec2012]" name="startTest" is-config="true" duration-ms="4120" started-at="2022-08-23T13:21:20Z" finished-at="2022-08-23T13:21:24Z">
+    <test name="Default test" duration-ms="91396" started-at="2022-08-29T12:26:45Z" finished-at="2022-08-29T12:28:16Z">
+      <class name="testScenarios.SharepointLogin">
+        <test-method status="PASS" signature="startTest()[pri:0, instance:testScenarios.SharepointLogin@59ec2012]" name="startTest" is-config="true" duration-ms="251" started-at="2022-08-29T17:56:44Z" finished-at="2022-08-29T17:56:45Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startTest -->
-        <test-method status="FAIL" signature="setup()[pri:0, instance:testScenarios.MappingsExport@59ec2012]" name="setup" is-config="true" duration-ms="91996" started-at="2022-08-23T13:21:24Z" finished-at="2022-08-23T13:22:56Z">
-          <exception class="org.openqa.selenium.WebDriverException">
-            <message>
-              <![CDATA[unknown error: DevToolsActivePort file doesn't exist
-Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
-System info: host: 'LAPTOP-32VKAIFG', ip: '10.93.23.132', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_291'
-Driver info: driver.version: ChromeDriver
-remote stacktrace: Backtrace:
-	Ordinal0 [0x006F78B3+2193587]
-	Ordinal0 [0x00690681+1771137]
-	Ordinal0 [0x005A41A8+803240]
-	Ordinal0 [0x005C50B2+938162]
-	Ordinal0 [0x005C121D+922141]
-	Ordinal0 [0x005BEBC1+912321]
-	Ordinal0 [0x005F23B0+1123248]
-	Ordinal0 [0x005F200A+1122314]
-	Ordinal0 [0x005ED5C6+1103302]
-	Ordinal0 [0x005C77E0+948192]
-	Ordinal0 [0x005C86E6+952038]
-	GetHandleVerifier [0x009A0CB2+2738370]
-	GetHandleVerifier [0x009921B8+2678216]
-	GetHandleVerifier [0x007817AA+512954]
-	GetHandleVerifier [0x00780856+509030]
-	Ordinal0 [0x0069743B+1799227]
-	Ordinal0 [0x0069BB68+1817448]
-	Ordinal0 [0x0069BC55+1817685]
-	Ordinal0 [0x006A5230+1856048]
-	BaseThreadInitThunk [0x754BFA29+25]
-	RtlGetAppContainerNamedObjectPath [0x775F7A9E+286]
-	RtlGetAppContainerNamedObjectPath [0x775F7A6E+238]
-]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.WebDriverException: unknown error: DevToolsActivePort file doesn't exist
-Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
-System info: host: 'LAPTOP-32VKAIFG', ip: '10.93.23.132', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_291'
-Driver info: driver.version: ChromeDriver
-remote stacktrace: Backtrace:
-	Ordinal0 [0x006F78B3+2193587]
-	Ordinal0 [0x00690681+1771137]
-	Ordinal0 [0x005A41A8+803240]
-	Ordinal0 [0x005C50B2+938162]
-	Ordinal0 [0x005C121D+922141]
-	Ordinal0 [0x005BEBC1+912321]
-	Ordinal0 [0x005F23B0+1123248]
-	Ordinal0 [0x005F200A+1122314]
-	Ordinal0 [0x005ED5C6+1103302]
-	Ordinal0 [0x005C77E0+948192]
-	Ordinal0 [0x005C86E6+952038]
-	GetHandleVerifier [0x009A0CB2+2738370]
-	GetHandleVerifier [0x009921B8+2678216]
-	GetHandleVerifier [0x007817AA+512954]
-	GetHandleVerifier [0x00780856+509030]
-	Ordinal0 [0x0069743B+1799227]
-	Ordinal0 [0x0069BB68+1817448]
-	Ordinal0 [0x0069BC55+1817685]
-	Ordinal0 [0x006A5230+1856048]
-	BaseThreadInitThunk [0x754BFA29+25]
-	RtlGetAppContainerNamedObjectPath [0x775F7A9E+286]
-	RtlGetAppContainerNamedObjectPath [0x775F7A6E+238]
-
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.W3CHandshakeResponse.lambda$new$0(W3CHandshakeResponse.java:57)
-	at org.openqa.selenium.remote.W3CHandshakeResponse.lambda$getResponseFunction$2(W3CHandshakeResponse.java:104)
-	at org.openqa.selenium.remote.ProtocolHandshake.lambda$createSession$0(ProtocolHandshake.java:122)
-	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
-	at java.util.Spliterators$ArraySpliterator.tryAdvance(Spliterators.java:958)
-	at java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:126)
-	at java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:499)
-	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:486)
-	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
-	at java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:152)
-	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-	at java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:464)
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:125)
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:73)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:136)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
-	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:212)
-	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:130)
-	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:181)
-	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:168)
-	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:157)
-	at base.BaseClass.initialization(BaseClass.java:88)
-	at testScenarios.MappingsExport.setup(MappingsExport.java:71)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
-	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:523)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:224)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:146)
-	at org.testng.TestRunner.beforeRun(TestRunner.java:626)
-	at org.testng.TestRunner.run(TestRunner.java:594)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:375)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1226)
-	at org.testng.TestNG.runSuites(TestNG.java:1144)
-	at org.testng.TestNG.run(TestNG.java:1115)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.WebDriverException -->
+        <test-method status="PASS" signature="setup()[pri:0, instance:testScenarios.SharepointLogin@59ec2012]" name="setup" is-config="true" duration-ms="46345" started-at="2022-08-29T17:56:45Z" finished-at="2022-08-29T17:57:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="SKIP" signature="setUp()[pri:0, instance:testScenarios.MappingsExport@59ec2012]" name="setUp" is-config="true" duration-ms="0" started-at="2022-08-23T13:22:57Z" finished-at="2022-08-23T13:22:57Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testScenarios.SharepointLogin@59ec2012]" name="setUp" is-config="true" duration-ms="3" started-at="2022-08-29T17:57:31Z" finished-at="2022-08-29T17:57:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="SKIP" signature="mappingExport()[pri:0, instance:testScenarios.MappingsExport@59ec2012]" name="mappingExport" duration-ms="66" started-at="2022-08-23T13:22:57Z" finished-at="2022-08-23T13:22:57Z">
-          <exception class="org.openqa.selenium.WebDriverException">
-            <message>
-              <![CDATA[unknown error: DevToolsActivePort file doesn't exist
-Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
-System info: host: 'LAPTOP-32VKAIFG', ip: '10.93.23.132', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_291'
-Driver info: driver.version: ChromeDriver
-remote stacktrace: Backtrace:
-	Ordinal0 [0x006F78B3+2193587]
-	Ordinal0 [0x00690681+1771137]
-	Ordinal0 [0x005A41A8+803240]
-	Ordinal0 [0x005C50B2+938162]
-	Ordinal0 [0x005C121D+922141]
-	Ordinal0 [0x005BEBC1+912321]
-	Ordinal0 [0x005F23B0+1123248]
-	Ordinal0 [0x005F200A+1122314]
-	Ordinal0 [0x005ED5C6+1103302]
-	Ordinal0 [0x005C77E0+948192]
-	Ordinal0 [0x005C86E6+952038]
-	GetHandleVerifier [0x009A0CB2+2738370]
-	GetHandleVerifier [0x009921B8+2678216]
-	GetHandleVerifier [0x007817AA+512954]
-	GetHandleVerifier [0x00780856+509030]
-	Ordinal0 [0x0069743B+1799227]
-	Ordinal0 [0x0069BB68+1817448]
-	Ordinal0 [0x0069BC55+1817685]
-	Ordinal0 [0x006A5230+1856048]
-	BaseThreadInitThunk [0x754BFA29+25]
-	RtlGetAppContainerNamedObjectPath [0x775F7A9E+286]
-	RtlGetAppContainerNamedObjectPath [0x775F7A6E+238]
-]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.WebDriverException: unknown error: DevToolsActivePort file doesn't exist
-Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
-System info: host: 'LAPTOP-32VKAIFG', ip: '10.93.23.132', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_291'
-Driver info: driver.version: ChromeDriver
-remote stacktrace: Backtrace:
-	Ordinal0 [0x006F78B3+2193587]
-	Ordinal0 [0x00690681+1771137]
-	Ordinal0 [0x005A41A8+803240]
-	Ordinal0 [0x005C50B2+938162]
-	Ordinal0 [0x005C121D+922141]
-	Ordinal0 [0x005BEBC1+912321]
-	Ordinal0 [0x005F23B0+1123248]
-	Ordinal0 [0x005F200A+1122314]
-	Ordinal0 [0x005ED5C6+1103302]
-	Ordinal0 [0x005C77E0+948192]
-	Ordinal0 [0x005C86E6+952038]
-	GetHandleVerifier [0x009A0CB2+2738370]
-	GetHandleVerifier [0x009921B8+2678216]
-	GetHandleVerifier [0x007817AA+512954]
-	GetHandleVerifier [0x00780856+509030]
-	Ordinal0 [0x0069743B+1799227]
-	Ordinal0 [0x0069BB68+1817448]
-	Ordinal0 [0x0069BC55+1817685]
-	Ordinal0 [0x006A5230+1856048]
-	BaseThreadInitThunk [0x754BFA29+25]
-	RtlGetAppContainerNamedObjectPath [0x775F7A9E+286]
-	RtlGetAppContainerNamedObjectPath [0x775F7A6E+238]
-
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.W3CHandshakeResponse.lambda$new$0(W3CHandshakeResponse.java:57)
-	at org.openqa.selenium.remote.W3CHandshakeResponse.lambda$getResponseFunction$2(W3CHandshakeResponse.java:104)
-	at org.openqa.selenium.remote.ProtocolHandshake.lambda$createSession$0(ProtocolHandshake.java:122)
-	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
-	at java.util.Spliterators$ArraySpliterator.tryAdvance(Spliterators.java:958)
-	at java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:126)
-	at java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:499)
-	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:486)
-	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
-	at java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:152)
-	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-	at java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:464)
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:125)
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:73)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:136)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
-	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:212)
-	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:130)
-	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:181)
-	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:168)
-	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:157)
-	at base.BaseClass.initialization(BaseClass.java:88)
-	at testScenarios.MappingsExport.setup(MappingsExport.java:71)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
-	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:523)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:224)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:146)
-	at org.testng.TestRunner.beforeRun(TestRunner.java:626)
-	at org.testng.TestRunner.run(TestRunner.java:594)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:375)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1226)
-	at org.testng.TestNG.runSuites(TestNG.java:1144)
-	at org.testng.TestNG.run(TestNG.java:1115)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.WebDriverException -->
+        <test-method status="PASS" signature="Login()[pri:0, instance:testScenarios.SharepointLogin@59ec2012]" name="Login" duration-ms="44861" started-at="2022-08-29T17:57:31Z" finished-at="2022-08-29T17:58:16Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- mappingExport -->
-        <test-method status="SKIP" signature="tearDown()[pri:0, instance:testScenarios.MappingsExport@59ec2012]" name="tearDown" is-config="true" duration-ms="0" started-at="2022-08-23T13:22:57Z" finished-at="2022-08-23T13:22:57Z">
+        </test-method> <!-- Login -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testScenarios.SharepointLogin@59ec2012]" name="tearDown" is-config="true" duration-ms="0" started-at="2022-08-29T17:58:16Z" finished-at="2022-08-29T17:58:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="SKIP" signature="endTest()[pri:0, instance:testScenarios.MappingsExport@59ec2012]" name="endTest" is-config="true" duration-ms="0" started-at="2022-08-23T13:22:57Z" finished-at="2022-08-23T13:22:57Z">
+        <test-method status="PASS" signature="endTest()[pri:0, instance:testScenarios.SharepointLogin@59ec2012]" name="endTest" is-config="true" duration-ms="4468" started-at="2022-08-29T17:58:17Z" finished-at="2022-08-29T17:58:21Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endTest -->
-      </class> <!-- testScenarios.MappingsExport -->
+      </class> <!-- testScenarios.SharepointLogin -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
