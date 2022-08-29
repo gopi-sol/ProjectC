@@ -712,7 +712,7 @@ System.out.println("Entered for");
 							System.out.println( "going to delete"+folders.size());
 							for (int k = 0; k < folders.size(); k++) {
 
-								if (folders.get(k).getText().equals(mappingName)) {
+								if (folders.get(k).getText().split(".")[0].equals(mappingName)) {
 									System.out.println(mappingName);
 									System.out.println(mappingName + " is Uploaded");
 									test.log(LogStatus.PASS,
@@ -820,7 +820,7 @@ System.out.println("Entered for");
 									Thread.sleep(5000);
 									break;
 
-								} else if (!mappingName.equals(folders.get(k).getText()) && k == folders.size() - 1) {
+								} else if (!mappingName.equals(folders.get(k).getText().split(".")[0]) && k == folders.size() - 1) {
 
 									System.out.println(mappingName);
 									System.out.println(mappingName + " is not Uploaded");
