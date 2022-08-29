@@ -429,7 +429,11 @@ public class MappingsExport extends BaseClass {
 							String SharepointLoginpagetitle = driver.getTitle();
 
 							if (SharepointLoginpagetitle.equals("Sign in to your account")) {
-
+								if (i>0) {
+	
+									driver.findElement(By.xpath("//div[@id='otherTileText']")).click();
+	
+								}
 								utils.waitForElementToBeClickable(driver.findElement(sharepointPage.getUsername()), 30);
 								driver.findElement(sharepointPage.getUsername())
 										.sendKeys(tu.getData("TestMappingExportAuto.xlsx", "Sharepoint", 1, 1));
