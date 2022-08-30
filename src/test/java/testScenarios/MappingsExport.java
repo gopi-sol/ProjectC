@@ -969,6 +969,7 @@ public class MappingsExport extends BaseClass {
 							test.addScreenCapture(getAScreenshot())
 									+ tu.getData(ExcelName, "Mapping templates ", i + 1, 1)
 									+ " -Can't proceed Further");
+					driver.switchTo().defaultContent();
 					driver.switchTo().frame("kop");
 					utils.getElement(mappingPage.getLogOff()).click();
 				}
