@@ -21,6 +21,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openxml4j.exceptions.InvalidFormatException;
+import org.sikuli.script.FindFailed;
+import org.sikuli.script.Pattern;
+import org.sikuli.script.Screen;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
@@ -90,8 +93,13 @@ public class MappingsExport extends BaseClass {
 	static List<WebElement> mappingCleanUpRows, mappingCleanUpColumns = null;
 
 	@Test()
-	public void mappingExport() throws IOException, InterruptedException {
-
+	public void mappingExport() throws IOException, InterruptedException, FindFailed {
+		String filepath = System.getProperty("user.dir")+File.separator+"Property";
+		System.out.println(System.getProperty("user.dir"));
+		System.out.println(System.getProperty("user.dir")+File.separator+"Property");
+				 Screen s = new Screen();
+			        Pattern fileInputTextBox = new Pattern(filepath+File.separator+"FileTextBox.Png");
+			        Pattern SaveButton = new Pattern(filepath+File.separator+"SaveButton.Png");
 		urlLaunch("TestMappingExportAuto.xlsx");
 
 		String title = driver.getTitle();
@@ -177,10 +185,13 @@ public class MappingsExport extends BaseClass {
 				 Thread.sleep(5000);
 				
 				 System.out.println(mappingCleanUpColumns.get(1) + " is clicked");
-				 StringSelection file = new StringSelection(absolutePathExcel + File.separator
-				 + ExcelName);
-				 Clipboard systemClipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-				 systemClipboard.setContents(file, null);
+//				 StringSelection file = new StringSelection(absolutePathExcel + File.separator
+//				 + ExcelName);
+//				 Clipboard systemClipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+//				 systemClipboard.setContents(file, null);
+				  
+				 String file = absolutePathExcel + File.separator
+						 + ExcelName;
 				
 				 Robot rb = null;
 				
@@ -193,17 +204,21 @@ public class MappingsExport extends BaseClass {
 				
 				 rb.setAutoDelay(2000); // Similar to thread.sleep
 				
-				 rb.keyPress(KeyEvent.VK_CONTROL);
-				 rb.keyPress(KeyEvent.VK_V);
-				 rb.keyRelease(KeyEvent.VK_V);
-				 rb.keyRelease(KeyEvent.VK_CONTROL);
-				
-				 rb.setAutoDelay(2000);
-				
-				 rb.keyPress(KeyEvent.VK_ENTER);
-				 rb.keyRelease(KeyEvent.VK_ENTER);
-				
-				 Thread.sleep(5000);
+//				 rb.keyPress(KeyEvent.VK_CONTROL);
+//				 rb.keyPress(KeyEvent.VK_V);
+//				 rb.keyRelease(KeyEvent.VK_V);
+//				 rb.keyRelease(KeyEvent.VK_CONTROL);
+//				
+//				 rb.setAutoDelay(2000);
+//				
+//				 rb.keyPress(KeyEvent.VK_ENTER);
+//				 rb.keyRelease(KeyEvent.VK_ENTER);
+//				
+//				 Thread.sleep(5000);
+				 
+				 s.type(fileInputTextBox, file );
+			        s.click(SaveButton);
+					
 				 break;
 			} else {
 				System.out.println("No Files available on this Date");
