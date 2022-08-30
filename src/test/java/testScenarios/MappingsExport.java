@@ -468,6 +468,11 @@ public class MappingsExport extends BaseClass {
 								System.out.println(tu.getData("TestMappingExportAuto.xlsx", "Sharepoint", 1, 2));
 								utils.waitForElementToBeClickable(driver.findElement(sharepointPage.getSubmit()), 30);
 								driver.findElement(sharepointPage.getSubmit()).click();
+								driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+								driver.findElement(sharepointPage.getSubmit()).click();
+								
+								driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+								driver.findElement(By.xpath("//*[@id=\"CancelLinkButton\"]")).click();
 								//
 								// Thread.sleep(10000);
 								// Thread.sleep(10000);
@@ -477,7 +482,7 @@ public class MappingsExport extends BaseClass {
 								// TimeUnit.SECONDS);
 								// driver.findElement(sharepointPage.getSubmit()).click();
 								Thread.sleep(2000);
-								driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+								driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 								driver.findElement(sharepointPage.getSubmit()).click();
 
 							}

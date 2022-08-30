@@ -91,6 +91,8 @@ public class SharepointLogin extends BaseClass {
 			System.out.println(tu.getData("TestMappingExportAuto.xlsx", "Sharepoint", 1, 2));
 			utils.waitForElementToBeClickable(driver.findElement(sharepointPage.getSubmit()), 30);
 			driver.findElement(sharepointPage.getSubmit()).click();
+			driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+			driver.findElement(sharepointPage.getSubmit()).click();
 			//
 			// Thread.sleep(10000);
 			// Thread.sleep(10000);
@@ -100,6 +102,8 @@ public class SharepointLogin extends BaseClass {
 			// TimeUnit.SECONDS);
 			// driver.findElement(sharepointPage.getSubmit()).click();
 			Thread.sleep(5000);
+			driver.findElement(By.xpath("//*[@id=\"CancelLinkButton\"]")).click();
+			
 			driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 			driver.findElement(sharepointPage.getSubmit()).click();
 
@@ -107,12 +111,12 @@ public class SharepointLogin extends BaseClass {
 		utils.waitForElementToBeClickable(sharepointPage.getMyFiles(), 120);
 		// driver.findElement(sharepointPage.getMyFiles()).click();
 
-		utils.visibilityOfAllElements(driver.findElements(sharepointPage.getFolders()), 90);
+//		utils.visibilityOfAllElements(driver.findElements(sharepointPage.getFolders()), 90);
 		folders = driver.findElements(sharepointPage.getFolders());
 		
 		driver.findElement(By.xpath("//*[@id=\"O365_MainLink_MePhoto\"]/div/div/div/div/div[2]")).click();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		driver.findElement(By.xpath("//*[@id=\"mectrl_body_signOut\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"meControlSignoutLink\"]")).click();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 		
