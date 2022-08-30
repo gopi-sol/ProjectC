@@ -223,7 +223,7 @@ public class MappingsExport extends BaseClass {
 				 
 				 s.type(fileInputTextBox, file );
 			        s.click(SaveButton);
-					
+					Thread.sleep(3000);
 				 break;
 			} else {
 				System.out.println("No Files available on this Date");
