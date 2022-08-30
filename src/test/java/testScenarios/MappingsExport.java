@@ -173,38 +173,38 @@ public class MappingsExport extends BaseClass {
 				System.out.println(mappingCleanUpColumns.get(1) + " is about to be clicked");
 
 				WebElement toClick = mappingCleanUpColumns.get(1).findElement(By.tagName("a"));
-				// toClick.click();
-				// Thread.sleep(5000);
-				//
-				// System.out.println(mappingCleanUpColumns.get(1) + " is clicked");
-				// StringSelection file = new StringSelection(absolutePathExcel + File.separator
-				// + ExcelName);
-				// Clipboard systemClipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-				// systemClipboard.setContents(file, null);
-				//
-				// Robot rb = null;
-				//
-				// try {
-				// rb = new Robot();
-				// } catch (AWTException e) {
-				//
-				// e.printStackTrace();
-				// }
-				//
-				// rb.setAutoDelay(2000); // Similar to thread.sleep
-				//
-				// rb.keyPress(KeyEvent.VK_CONTROL);
-				// rb.keyPress(KeyEvent.VK_V);
-				// rb.keyRelease(KeyEvent.VK_V);
-				// rb.keyRelease(KeyEvent.VK_CONTROL);
-				//
-				// rb.setAutoDelay(2000);
-				//
-				// rb.keyPress(KeyEvent.VK_ENTER);
-				// rb.keyRelease(KeyEvent.VK_ENTER);
-				//
-				// Thread.sleep(5000);
-				// break;
+				 toClick.click();
+				 Thread.sleep(5000);
+				
+				 System.out.println(mappingCleanUpColumns.get(1) + " is clicked");
+				 StringSelection file = new StringSelection(absolutePathExcel + File.separator
+				 + ExcelName);
+				 Clipboard systemClipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+				 systemClipboard.setContents(file, null);
+				
+				 Robot rb = null;
+				
+				 try {
+				 rb = new Robot();
+				 } catch (AWTException e) {
+				
+				 e.printStackTrace();
+				 }
+				
+				 rb.setAutoDelay(2000); // Similar to thread.sleep
+				
+				 rb.keyPress(KeyEvent.VK_CONTROL);
+				 rb.keyPress(KeyEvent.VK_V);
+				 rb.keyRelease(KeyEvent.VK_V);
+				 rb.keyRelease(KeyEvent.VK_CONTROL);
+				
+				 rb.setAutoDelay(2000);
+				
+				 rb.keyPress(KeyEvent.VK_ENTER);
+				 rb.keyRelease(KeyEvent.VK_ENTER);
+				
+				 Thread.sleep(5000);
+				 break;
 			} else {
 				System.out.println("No Files available on this Date");
 				test.log(LogStatus.FAIL,
@@ -869,7 +869,7 @@ public class MappingsExport extends BaseClass {
 									String text = alert.getText();
 
 									System.out.println(alert);
-									alert.dismiss();
+									alert.accept();
 
 									System.out.println("Mapping Delete");
 									test.log(LogStatus.PASS,
@@ -971,8 +971,8 @@ public class MappingsExport extends BaseClass {
 
 			if (mappingCleanUpColumns.get(1).getText().equals(ExcelName)) {
 				List<WebElement> toClick = mappingCleanUpColumns.get(2).findElements(By.tagName("button"));
-				toClick.get(1).click();
-				System.out.println(toClick.get(1).getText() + " is going to be clicked");
+				toClick.get(0).click();
+//				System.out.println(toClick.get(0).getText() + " is going to be clicked");
 				Thread.sleep(5000);
 				break;
 			}
