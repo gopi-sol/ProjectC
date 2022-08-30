@@ -203,7 +203,12 @@ public class MappingsExport extends BaseClass {
 				 }
 				
 				 rb.setAutoDelay(2000); // Similar to thread.sleep
-				
+
+				 rb.keyPress(KeyEvent.VK_BACK_SPACE);
+				 rb.keyRelease(KeyEvent.VK_BACK_SPACE);
+				 
+			
+				 driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 //				 rb.keyPress(KeyEvent.VK_CONTROL);
 //				 rb.keyPress(KeyEvent.VK_V);
 //				 rb.keyRelease(KeyEvent.VK_V);
