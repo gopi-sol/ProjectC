@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="427136" started-at="2022-10-07T08:15:30Z" finished-at="2022-10-07T08:22:37Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="427136" started-at="2022-10-07T08:15:30Z" finished-at="2022-10-07T08:22:37Z">
+      <class name="testScenarios.mappingRegression">
+        <test-method status="PASS" signature="startTest()[pri:0, instance:testScenarios.mappingRegression@4cf777e8]" name="startTest" is-config="true" duration-ms="632" started-at="2022-10-07T13:45:29Z" finished-at="2022-10-07T13:45:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startTest -->
+        <test-method status="PASS" signature="setup()[pri:0, instance:testScenarios.mappingRegression@4cf777e8]" name="setup" is-config="true" duration-ms="23365" started-at="2022-10-07T13:45:30Z" finished-at="2022-10-07T13:45:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testScenarios.mappingRegression@4cf777e8]" name="setUp" is-config="true" duration-ms="2" started-at="2022-10-07T13:45:53Z" finished-at="2022-10-07T13:45:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="sftpImport()[pri:1, instance:testScenarios.mappingRegression@4cf777e8]" name="sftpImport" duration-ms="3252" started-at="2022-10-07T13:45:53Z" finished-at="2022-10-07T13:45:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- sftpImport -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testScenarios.mappingRegression@4cf777e8]" name="setUp" is-config="true" duration-ms="1" started-at="2022-10-07T13:45:56Z" finished-at="2022-10-07T13:45:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="comparingImportedValues()[pri:2, instance:testScenarios.mappingRegression@4cf777e8]" name="comparingImportedValues" duration-ms="400441" started-at="2022-10-07T13:45:56Z" depends-on-methods="testScenarios.mappingRegression.sftpImport" finished-at="2022-10-07T13:52:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- comparingImportedValues -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testScenarios.mappingRegression@4cf777e8]" name="tearDown" is-config="true" duration-ms="0" started-at="2022-10-07T13:52:37Z" finished-at="2022-10-07T13:52:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="endTest()[pri:0, instance:testScenarios.mappingRegression@4cf777e8]" name="endTest" is-config="true" duration-ms="681" started-at="2022-10-07T13:52:37Z" finished-at="2022-10-07T13:52:38Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endTest -->
+      </class> <!-- testScenarios.mappingRegression -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
